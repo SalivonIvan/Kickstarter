@@ -39,5 +39,10 @@ public class StoreProjects {
     public Project getProject(int index) {
         return projects.get(index);
     }
+
+    public List<Project> getProjects() {
+        return projects;
+    }
+    
     
 }

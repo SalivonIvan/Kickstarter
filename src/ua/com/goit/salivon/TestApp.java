@@ -15,14 +15,13 @@ import java.util.Date;
 public class TestApp {
 
     public static void main(String[] args) {
-        Quotes q = new Quotes();
-        StoreCategories categories = new StoreCategories();
         Console console = new Console();
-        console.print(q.getQuote());
-        console.print(categories.getAllCategories());
-        categories.addCategory(new Category("Music"));
-        console.print(categories.getAllCategories());
-        
+        console.createWelcomScene();
+        console.print();
+        console.createCategoryScene(1);
+        console.print();
+        console.createProjectScene(4);
+        console.print();
 //        Date date = new Date();
 //        System.out.println(date);
 //        for (int i = 0; i < 100000; i++) {
@@ -33,7 +32,6 @@ public class TestApp {
 //        calendar.set(2015, 11, 25);
 //        long milSecondEnd = calendar.getTimeInMillis();
 //        System.out.println((milSecondEnd - milSecondStart) / (1000*60*60*24));
-
     }
 
 }

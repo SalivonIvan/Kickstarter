@@ -38,6 +38,26 @@ public class Project {
 
     }
 
+    public int getCollectedAmount() {
+        return collectedAmount;
+    }
+
+    public int getTotal() {
+        return total;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public int getIdCategory() {
+        return idCategory;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
     public int getNumberOfDaysToEnd() {
         long milSecondStart = dateStart.getTime();
         long milSecondEnd = Calendar.getInstance().getTimeInMillis();
