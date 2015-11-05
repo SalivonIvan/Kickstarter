@@ -14,14 +14,11 @@ import java.util.Date;
  */
 public class TestApp {
 
+    
     public static void main(String[] args) {
         Console console = new Console();
-        console.createWelcomScene();
-        console.print();
-        console.createCategoryScene(1);
-        console.print();
-        console.createProjectScene(4);
-        console.print();
+      console.managerScene();
+        
 //        Date date = new Date();
 //        System.out.println(date);
 //        for (int i = 0; i < 100000; i++) {

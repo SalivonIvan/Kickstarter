@@ -12,7 +12,7 @@ package ua.com.goit.salivon;
 public class IdCategory {
 
     private static IdCategory instance;
-    private int numberId = 0;
+    private int numberId = 1;
 
     private IdCategory() {
     }

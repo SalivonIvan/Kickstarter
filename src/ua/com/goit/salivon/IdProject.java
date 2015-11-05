@@ -12,7 +12,7 @@ package ua.com.goit.salivon;
 public class IdProject {
 
     private static IdProject instance;
-    private int numberId = 0;
+    private int numberId = 1;
 
     private IdProject() {
     }
