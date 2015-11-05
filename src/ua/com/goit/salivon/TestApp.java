@@ -14,21 +14,10 @@ import java.util.Date;
  */
 public class TestApp {
 
-    
     public static void main(String[] args) {
         Console console = new Console();
-      console.managerScene();
-        
-//        Date date = new Date();
-//        System.out.println(date);
-//        for (int i = 0; i < 100000; i++) {
-//            System.out.println(i);
-//        }
-//        Calendar calendar = Calendar.getInstance();
-//        long milSecondStart = date.getTime();
-//        calendar.set(2015, 11, 25);
-//        long milSecondEnd = calendar.getTimeInMillis();
-//        System.out.println((milSecondEnd - milSecondStart) / (1000*60*60*24));
+        console.managerScene();
+
     }
 
 }
