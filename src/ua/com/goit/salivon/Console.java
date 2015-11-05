@@ -17,112 +17,120 @@ public class Console {
     private StringBuilder scene;
     private StoreCategories categories;
     private StoreProjects projects;
-    private Quotes qutes;
+    private Quotes quotes;
     private int numScene;
-    private int index;
+    private int indexCategory;
+    private int indexProject;
 
     public Console() {
         scene = new StringBuilder();
         categories = new StoreCategories();
         projects = new StoreProjects();
-        qutes = new Quotes();
+        quotes = new Quotes();
         numScene = 1;
     }
 
-    void managerScene() {
+    public  void managerScene() {
         if (numScene == 1) {
             createWelcomScene();
             print();
-            reader();
-            managerScene();
+
         }
         if (numScene == 2) {
-            createCategoryScene(index);
+            createCategoryScene(indexCategory);
             print();
-             reader();
-            managerScene();
+
         }
         if (numScene == 3) {
-            createProjectScene(index);
+            createProjectScene(indexProject);
             print();
-             reader();
-            managerScene();
+
         }
+        reader();
+
     }
 
-    public void reader() {
-        int number = 0;
+    private void reader() {
         Scanner scan = new Scanner(System.in);
-        if (scan.hasNext()) {
-            if (scan.nextLine().equals("q")) {
-                System.exit(0);
-            }
-        }
-        if (scan.nextInt()==0) {
-            if (numScene==2) {
-                numScene--;
-                scan.close();
-            }
-            if (numScene==3) {
-                numScene--;
-                scan.close();
-            }
-        }
-        if (scan.nextInt()!=0) {
-            if (numScene==1) {
-                numScene++;
-                index=scan.nextInt();
-                scan.close();
-                return;
-            }
-            if (numScene==2) {
-                numScene++;
-                index=scan.nextInt();
-                scan.close();
-            }
-        }
-        
+        String line = scan.next();
+
+        validate(line);
+        managerScene();
+
     }
 
-    public void print() {
+    private void validate(String str) {
+
+        if (str.equals("q")) {
+            System.exit(0);
+        }
+        int n = Integer.parseInt(str);
+        if (n == 0) {
+            if (numScene == 2) {
+                numScene--;
+            }
+            if (numScene == 3) {
+                numScene--;
+
+            }
+        }
+        if (n != 0) {
+            if (numScene == 2) {
+                numScene++;
+                indexProject = n;
+
+            }
+
+            if (numScene == 1) {
+                numScene++;
+                indexCategory = n;
+
+            }
+
+        }
+    }
+
+    private  void print() {
         System.out.println(scene);
     }
 
-    public void createWelcomScene() {
+    private  void createWelcomScene() {
         if (scene.length() >= 1) {
             scene.delete(0, scene.length());
         }
 
-        scene.append(qutes.getQuote() + "\n");
+        scene.append(quotes.getQuote() + "\n");
         scene.append(categories.getAllCategories());
         scene.append("--------------------------------------------------\n");
         scene.append("Enter number category or enter 'q' to exit." + "\n");
     }
 
-    public void createCategoryScene(int idCategory) {
+    private  void createCategoryScene(int idCategory) {
+        int index = idCategory-1;
         scene.delete(0, scene.length());
         scene.append("Category - ");
-        Category cat = categories.getCategory(idCategory);
-        scene.append(cat.getId() + " " + cat.getName() + "\n");
+        Category cat = categories.getCategory(index);
+        scene.append(cat.getId() + " " + cat.getName() + "\n\n");
         scene.append("Projects:\n");
         List<Project> list = projects.getProjects();
         for (Project list1 : list) {
-            if (list1.getIdCategory() == idCategory) {
+            if (list1.getIdCategory() == index) {
                 scene.append(list1.getId() + " - " + list1.getTitle() + "\n");
-                scene.append("Description: " + list1.getDescription() + "\n");
-                scene.append("Total " + list1.getTotal() + "\n");
-                scene.append("Collected amount " + list1.getCollectedAmount() + "\n");
-                scene.append("Number of days to end " + list1.getNumberOfDaysToEnd() + "\n");
+                scene.append("  Description: " + list1.getDescription() + "\n");
+                scene.append("  Total " + list1.getTotal() + "\n");
+                scene.append("  Collected amount " + list1.getCollectedAmount() + "\n");
+                scene.append("  Number of days to end " + list1.getNumberOfDaysToEnd() + "\n\n");
             }
         }
         scene.append("--------------------------------------------------\n");
         scene.append("Enter number project or enter 'q' to exit,\nor enter 0 return to above." + "\n");
     }
 
-    public void createProjectScene(int idProject) {
+    private  void createProjectScene(int idProject) {
+        int index = idProject-1;
         scene.delete(0, scene.length());
         scene.append("Project\n");
-        Project project = projects.getProject(idProject);
+        Project project = projects.getProject(index);
         scene.append(project.getTitle());
         scene.append("Enter 'q' to exit,\nor enter 0 return to above." + "\n");
     }
