@@ -34,6 +34,10 @@ public class StoreCategories {
         return categories.get(idCategory);
     }
 
+    public List<Category> getCategories() {
+        return categories;
+    }
+
     public String getAllCategories() {
         String str = "Categories:\n";
         for (int i = 0; i < categories.size(); i++) {
