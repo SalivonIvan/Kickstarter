@@ -14,11 +14,14 @@ import java.util.Scanner;
  */
 public class Console {
 
+    private static final String WELCOME_SCENE = "WELCOME";
+    private static final String CATEGORY_SCENE = "CATEGORY";
+    private static final String PROJECT_SCENE = "PROJECT";
     private StringBuilder scene;
     private StoreCategories categories;
     private StoreProjects projects;
     private Quotes quotes;
-    private int numScene;
+    private String stateScene;
     private int indexCategory;
     private int indexProject;
 
@@ -27,21 +30,21 @@ public class Console {
         categories = new StoreCategories();
         projects = new StoreProjects();
         quotes = new Quotes();
-        numScene = 1;
+        stateScene = WELCOME_SCENE;
     }
 
-    public  void managerScene() {
-        if (numScene == 1) {
+    public void managerScene() {
+        if (stateScene == WELCOME_SCENE) {
             createWelcomScene();
             print();
 
         }
-        if (numScene == 2) {
+        if (stateScene == CATEGORY_SCENE) {
             createCategoryScene(indexCategory);
             print();
 
         }
-        if (numScene == 3) {
+        if (stateScene == PROJECT_SCENE) {
             createProjectScene(indexProject);
             print();
 
@@ -53,36 +56,40 @@ public class Console {
     private void reader() {
         Scanner scan = new Scanner(System.in);
         String line = scan.next();
-
-        validate(line);
+        HendlingError hend = new HendlingErrorFactory().getHendlingError(stateScene, categories, projects);
+        if (!hend.validate(line)) {
+            System.out.println("Enter the correct data!!!");
+            reader();
+        }
+        processingOfData(line);
         managerScene();
 
     }
 
-    private void validate(String str) {
+    private void processingOfData(String str) {
 
-        if (str.equals("q")) {
+        if (str.equalsIgnoreCase("q")) {
             System.exit(0);
         }
         int n = Integer.parseInt(str);
         if (n == 0) {
-            if (numScene == 2) {
-                numScene--;
+            if (stateScene == CATEGORY_SCENE) {
+                stateScene = WELCOME_SCENE;
             }
-            if (numScene == 3) {
-                numScene--;
+            if (stateScene == PROJECT_SCENE) {
+                stateScene = CATEGORY_SCENE;
 
             }
         }
         if (n != 0) {
-            if (numScene == 2) {
-                numScene++;
+            if (stateScene == CATEGORY_SCENE) {
+                stateScene = PROJECT_SCENE;
                 indexProject = n;
 
             }
 
-            if (numScene == 1) {
-                numScene++;
+            if (stateScene == WELCOME_SCENE) {
+                stateScene = CATEGORY_SCENE;
                 indexCategory = n;
 
             }
@@ -90,11 +97,11 @@ public class Console {
         }
     }
 
-    private  void print() {
+    private void print() {
         System.out.println(scene);
     }
 
-    private  void createWelcomScene() {
+    private void createWelcomScene() {
         if (scene.length() >= 1) {
             scene.delete(0, scene.length());
         }
@@ -105,8 +112,8 @@ public class Console {
         scene.append("Enter number category or enter 'q' to exit." + "\n");
     }
 
-    private  void createCategoryScene(int idCategory) {
-        int index = idCategory-1;
+    private void createCategoryScene(int idCategory) {
+        int index = idCategory - 1;
         scene.delete(0, scene.length());
         scene.append("Category - ");
         Category cat = categories.getCategory(index);
@@ -126,12 +133,12 @@ public class Console {
         scene.append("Enter number project or enter 'q' to exit,\nor enter 0 return to above." + "\n");
     }
 
-    private  void createProjectScene(int idProject) {
-        int index = idProject-1;
+    private void createProjectScene(int idProject) {
+        int index = idProject - 1;
         scene.delete(0, scene.length());
         scene.append("Project\n");
         Project project = projects.getProject(index);
-        scene.append(project.getTitle());
+        scene.append(project.getTitle()+"\n");
         scene.append("Enter 'q' to exit,\nor enter 0 return to above." + "\n");
     }
 }
