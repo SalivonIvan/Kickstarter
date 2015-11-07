@@ -5,9 +5,6 @@
  */
 package ua.com.goit.salivon;
 
-import java.util.Calendar;
-import java.util.Date;
-
 /**
  *
  * @author Оля

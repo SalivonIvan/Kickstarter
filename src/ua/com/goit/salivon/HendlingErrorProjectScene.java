@@ -11,21 +11,19 @@ package ua.com.goit.salivon;
  */
 public class HendlingErrorProjectScene implements HendlingError {
 
-    HendlingError hendError = new HendlingErrorQuit();
-
     @Override
     public boolean validate(String inConsole) {
 
         try {
             int n = Integer.parseInt(inConsole);
-            if (n == 0 || hendError.validate(inConsole)) {
+            if (n == 0) {
                 return true;
             } else {
                 return false;
             }
         } catch (NumberFormatException e) {
             if (inConsole.equalsIgnoreCase("q")) {
-                System.exit(0);
+                return true;
 
             }
             return false;

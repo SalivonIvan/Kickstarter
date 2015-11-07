@@ -56,10 +56,15 @@ public class Console {
     private void reader() {
         Scanner scan = new Scanner(System.in);
         String line = scan.next();
-        HendlingError hend = new HendlingErrorFactory().getHendlingError(stateScene, categories, projects);
+        HendlingError hend = new HendlingErrorFactory().getHendlingError(stateScene, categories, projects, indexCategory);
         if (!hend.validate(line)) {
             System.out.println("Enter the correct data!!!");
             reader();
+        }
+        if (line.equalsIgnoreCase("q")) {
+            scan.close();
+            System.exit(0);
+           
         }
         processingOfData(line);
         managerScene();
@@ -68,9 +73,6 @@ public class Console {
 
     private void processingOfData(String str) {
 
-        if (str.equalsIgnoreCase("q")) {
-            System.exit(0);
-        }
         int n = Integer.parseInt(str);
         if (n == 0) {
             if (stateScene == CATEGORY_SCENE) {
@@ -138,7 +140,7 @@ public class Console {
         scene.delete(0, scene.length());
         scene.append("Project\n");
         Project project = projects.getProject(index);
-        scene.append(project.getTitle()+"\n");
+        scene.append(project.getTitle() + "\n");
         scene.append("Enter 'q' to exit,\nor enter 0 return to above." + "\n");
     }
 }

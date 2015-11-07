@@ -11,7 +11,6 @@ package ua.com.goit.salivon;
  */
 public class HendlingErrorWelcomScene implements HendlingError {
 
-    HendlingError hendError = new HendlingErrorQuit();
     StoreCategories categories;
 
     public HendlingErrorWelcomScene(StoreCategories categories) {
@@ -23,8 +22,7 @@ public class HendlingErrorWelcomScene implements HendlingError {
         try {
 
             int n = Integer.parseInt(inConsole);
-            if ((n - 1 >= 0 && n - 1 < categories.getCategories().size())
-                    || hendError.validate(inConsole)) {
+            if (n - 1 >= 0 && n - 1 < categories.getCategories().size()) {
                 return true;
             } else {
                 return false;
@@ -32,8 +30,8 @@ public class HendlingErrorWelcomScene implements HendlingError {
 
         } catch (NumberFormatException e) {
             if (inConsole.equalsIgnoreCase("q")) {
-            System.exit(0);
-        }
+                return true;
+            }
             return false;
         }
 

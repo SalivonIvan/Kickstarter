@@ -11,11 +11,11 @@ package ua.com.goit.salivon;
  */
 public class HendlingErrorFactory {
 
-    public HendlingError getHendlingError(String stateScene, StoreCategories categories, StoreProjects projects) {
+    public HendlingError getHendlingError(String stateScene, StoreCategories categories, StoreProjects projects, int indexCategory) {
         if (stateScene.equalsIgnoreCase("WELCOME")) {
             return new HendlingErrorWelcomScene(categories);
         } else if (stateScene.equalsIgnoreCase("CATEGORY")) {
-            return new HendlingErrorCategoryScene(projects);
+            return new HendlingErrorCategoryScene(projects,indexCategory);
         } else if (stateScene.equalsIgnoreCase("PROJECT")) {
             return new HendlingErrorProjectScene();
         }

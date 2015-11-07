@@ -11,31 +11,39 @@ package ua.com.goit.salivon;
  */
 public class HendlingErrorCategoryScene implements HendlingError {
 
-    HendlingError hendError = new HendlingErrorQuit();
-    StoreProjects projects;
+    private StoreProjects projects;
+    private int idCategory;
 
-    public HendlingErrorCategoryScene(StoreProjects projects) {
+    public HendlingErrorCategoryScene(StoreProjects projects, int indexCategory) {
         this.projects = projects;
+        this.idCategory = indexCategory - 1;
     }
 
     @Override
     public boolean validate(String inConsole) {
         try {
             int n = Integer.parseInt(inConsole);
-            int iu = projects.getProjects().size();
-            if ((n - 1 >= 0 && n - 1 < projects.getProjects().size())
-                    || hendError.validate(inConsole) || n == 0) {
+            if (n >= 0 && n -1< projects.getProjects().size()&&hasProject(n)) {
                 return true;
             } else {
                 return false;
             }
         } catch (NumberFormatException e) {
             if (inConsole.equalsIgnoreCase("q")) {
-            System.exit(0);
-        }
+                return true;
+            }
             return false;
         }
 
+    }
+
+    private boolean hasProject(int num) {
+        Project p = projects.getProject(num - 1);
+        if (p.getIdCategory() == idCategory) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
 }
