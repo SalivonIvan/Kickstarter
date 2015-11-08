@@ -19,9 +19,13 @@ public class HendlingErrorWelcomScene implements HendlingError {
 
     @Override
     public boolean validate(String inConsole) {
+
         try {
 
             int n = Integer.parseInt(inConsole);
+            if (n == 0) {
+                return false;
+            }
             if (n - 1 >= 0 && n - 1 < categories.getCategories().size()) {
                 return true;
             } else {
