@@ -64,7 +64,7 @@ public class Console {
         if (line.equalsIgnoreCase("q")) {
             scan.close();
             System.exit(0);
-           
+
         }
         processingOfData(line);
         managerScene();
@@ -126,7 +126,7 @@ public class Console {
             if (list1.getIdCategory() == index) {
                 scene.append(list1.getId() + " - " + list1.getTitle() + "\n");
                 scene.append("  Description: " + list1.getDescription() + "\n");
-                scene.append("  Total " + list1.getTotal() + "\n");
+                scene.append("  Total " + list1.getTotal() + "$\n");
                 scene.append("  Collected amount " + list1.getCollectedAmount() + "\n");
                 scene.append("  Number of days to end " + list1.getNumberOfDaysToEnd() + "\n\n");
             }
@@ -141,6 +141,13 @@ public class Console {
         scene.append("Project\n");
         Project project = projects.getProject(index);
         scene.append(project.getTitle() + "\n");
+        scene.append("  Description: " + project.getDescription() + "\n");
+        scene.append("  Total " + project.getTotal() + "$\n");
+        scene.append("  Collected amount " + project.getCollectedAmount() + "\n");
+        scene.append("  Number of days to end " + project.getNumberOfDaysToEnd() + "\n");
+        scene.append("  History " + project.getHistoryProject() + "\n");
+        scene.append("  Link " + project.getLink() + "\n");
+        scene.append("  FAQ " + project.getFaq() + "\n\n");
         scene.append("Enter 'q' to exit,\nor enter 0 return to above." + "\n");
     }
 }
