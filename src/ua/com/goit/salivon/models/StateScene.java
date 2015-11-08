@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ua.com.goit.salivon;
+package ua.com.goit.salivon.models;
 
 /**
  *
@@ -11,27 +11,27 @@ package ua.com.goit.salivon;
  */
 public class StateScene {
 
-    private static final String WELCOME_SCENE = "WELCOME";
-    private static final String CATEGORY_SCENE = "CATEGORY";
-    private static final String PROJECT_SCENE = "PROJECT";
+    public static final String WELCOME_SCENE = "WELCOME";
+    public static final String CATEGORY_SCENE = "CATEGORY";
+    public static final String PROJECT_SCENE = "PROJECT";
     private String currentState;
-    private boolean hasError;
+    private boolean error;
 
     public StateScene() {
         this.currentState = WELCOME_SCENE;
-        hasError = true;
+        error = false;
     }
 
     public String getCurrentState() {
         return currentState;
     }
 
-    public boolean isHasError() {
-        return hasError;
+    public boolean isError() {
+        return error;
     }
 
-    public void setHasError(boolean hasError) {
-        this.hasError = hasError;
+    public void setError(boolean error) {
+        this.error = error;
     }
     
 

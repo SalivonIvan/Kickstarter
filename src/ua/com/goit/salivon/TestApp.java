@@ -5,6 +5,8 @@
  */
 package ua.com.goit.salivon;
 
+import ua.com.goit.salivon.view.Console;
+
 /**
  *
  * @author Оля
@@ -12,8 +14,8 @@ package ua.com.goit.salivon;
 public class TestApp {
 
     public static void main(String[] args) {
-        Console console = new Console();
-        console.managerScene();
+        Console con = new Console();
+        con.execute();
 
     }
 

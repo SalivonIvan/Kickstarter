@@ -3,7 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ua.com.goit.salivon;
+package ua.com.goit.salivon.scenes;
+
+import ua.com.goit.salivon.scenes.ViewScene;
+import ua.com.goit.salivon.stores.Quotes;
+import ua.com.goit.salivon.stores.StoreCategories;
 
 /**
  *
@@ -11,31 +15,25 @@ package ua.com.goit.salivon;
  */
 public class WelcomeScene extends ViewScene {
 
-    private ControllerStores controller;
     private StoreCategories categories;
     private Quotes quotes;
 
-    public WelcomeScene(ControllerStores controller, String inData) {
-        this.controller = controller;
-        categories = controller.getCategories();
-        hendling = new HendlingErrorWelcomScene(categories);
-        this.inData = inData;
+    public WelcomeScene(StoreCategories store) {
+        quotes = new Quotes();
+        categories = store;
         menu = "Enter the number of categories to select it.\n"
                 + "Enter 'q' to exit.\n";
-        errorMessages = "Enter the correct data!";
+        createScene();
+
     }
 
     @Override
-    public void createScene() {
+    protected void createScene() {
 
         textScene.append(quotes.getQuote() + "\n");
         textScene.append(categories.getAllCategories());
         textScene.append("--------------------------------------------------\n");
         textScene.append(menu);
-        if (true) {
-            
-        }
 
     }
-
 }

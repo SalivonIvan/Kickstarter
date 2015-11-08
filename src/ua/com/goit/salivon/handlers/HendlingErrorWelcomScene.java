@@ -3,31 +3,37 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ua.com.goit.salivon;
+package ua.com.goit.salivon.handlers;
+
+import ua.com.goit.salivon.handlers.HendlingError;
+import ua.com.goit.salivon.stores.StoreCategories;
 
 /**
  *
  * @author salivon.i
  */
-public class HendlingErrorCategoryScene implements HendlingError {
+public class HendlingErrorWelcomScene implements HendlingError {
 
-    private StoreProjects projects;
-    private int idCategory;
+    StoreCategories categories;
 
-    public HendlingErrorCategoryScene(StoreProjects projects, int indexCategory) {
-        this.projects = projects;
-        this.idCategory = indexCategory - 1;
+    public HendlingErrorWelcomScene(StoreCategories categories) {
+        this.categories = categories;
     }
 
     @Override
     public boolean validate(String inConsole) {
+        if (inConsole==null) {
+            return true;
+        }
         try {
+
             int n = Integer.parseInt(inConsole);
-            if (n >= 0 && n -1< projects.getProjects().size()&&hasProject(n)) {
+            if (n - 1 >= 0 && n - 1 < categories.getCategories().size()) {
                 return true;
             } else {
                 return false;
             }
+
         } catch (NumberFormatException e) {
             if (inConsole.equalsIgnoreCase("q")) {
                 return true;
@@ -35,15 +41,6 @@ public class HendlingErrorCategoryScene implements HendlingError {
             return false;
         }
 
-    }
-
-    private boolean hasProject(int num) {
-        Project p = projects.getProject(num - 1);
-        if (p.getIdCategory() == idCategory) {
-            return true;
-        } else {
-            return false;
-        }
     }
 
 }

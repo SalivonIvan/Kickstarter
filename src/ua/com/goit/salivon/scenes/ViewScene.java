@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ua.com.goit.salivon;
+package ua.com.goit.salivon.scenes;
 
 /**
  *
@@ -11,15 +11,12 @@ package ua.com.goit.salivon;
  */
 public abstract class ViewScene {
 
-    protected StringBuilder textScene;
-    protected String errorMessages;
+    protected StringBuilder textScene = new StringBuilder();
     protected String menu;
-    protected String inData;
-    protected HendlingError hendling;
 
-    public  StringBuilder showScene(){
+    public StringBuilder showScene() {
         return textScene;
     }
 
-    public abstract  void createScene();
+    protected abstract void createScene();
 }
