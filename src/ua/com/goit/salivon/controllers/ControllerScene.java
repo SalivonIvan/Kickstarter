@@ -12,6 +12,7 @@ import ua.com.goit.salivon.models.StateScene;
 import ua.com.goit.salivon.scenes.ViewScene;
 import ua.com.goit.salivon.stores.StoreProjects;
 import ua.com.goit.salivon.stores.StoreCategories;
+import ua.com.goit.salivon.view.Console;
 
 /**
  *
@@ -26,12 +27,12 @@ public class ControllerScene {
     private StoreCategories categories;
     private StoreProjects projects;
     private int indexCategory;
-
+    
     public ControllerScene() {
         categories = new StoreCategories();
         projects = new StoreProjects();
         this.state = new StateScene();
-
+        
     }
 
     private void downloadScene() {

@@ -37,4 +37,21 @@ public class Quotes {
         return quote;
     }
 
+    public List<String> getQuotes() {
+        return quotes;
+    }
+
+    public void setQuotes(List<String> quotes) {
+        this.quotes = quotes;
+    }
+
+    public List<String> getAuthorQuotes() {
+        return authorQuotes;
+    }
+
+    public void setAuthorQuotes(List<String> authorQuotes) {
+        this.authorQuotes = authorQuotes;
+    }
+    
+
 }
