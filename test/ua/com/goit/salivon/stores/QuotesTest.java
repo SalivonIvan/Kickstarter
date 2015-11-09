@@ -5,34 +5,38 @@
  */
 package ua.com.goit.salivon.stores;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.Ignore;
 
 /**
  *
- * @author Оля
+ * @author salivon.i
  */
 public class QuotesTest {
-    
+
     public QuotesTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
     }
-    
+
     @After
     public void tearDown() {
     }
@@ -41,14 +45,38 @@ public class QuotesTest {
      * Test of getQuote method, of class Quotes.
      */
     @Test
-    public void testGetQuote() {
-        System.out.println("getQuote");
+    @Ignore
+    public void testPrintQuote() {
+        System.out.println("printQuote");
         Quotes instance = new Quotes();
-        String expResult = "";
         String result = instance.getQuote();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        if (result instanceof String) {
+            System.out.println(result);
+        }
+        assertTrue(true);
+
     }
-    
+
+    @Test
+    public void testRandomQuote() {
+        System.out.println("randomQuote");
+        Quotes instance = new Quotes();
+        int count = instance.getQuotes().size();
+        List<String> quotes = new ArrayList<>();
+        List<String> authors = new ArrayList<>();
+        Random r = new Random();
+        for (int i = 0; i < 10; i++) {
+            System.out.println(r.nextDouble()*10);
+        }
+        for (int i = 0; i < count; i++) {
+            System.out.println(instance.getQuote());
+
+            if (i > 0 && instance.getQuote() != quotes.get(i - 1)) {
+                assertTrue(true);
+            }
+            quotes.add(instance.getQuote());
+        }
+
+    }
+
 }
