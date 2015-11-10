@@ -34,7 +34,7 @@ public class Project {
         this.title = title;
         this.total = total;
         this.idCategory = idCategory;
-        historyProject ="...history...";
+        historyProject = "...history...";
         link = "...link...";
         faq = "...FAQ...";
         setId();
@@ -93,6 +93,5 @@ public class Project {
     public int getId() {
         return id;
     }
-    
 
 }
