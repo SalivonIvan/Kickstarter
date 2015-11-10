@@ -32,7 +32,7 @@ public class Console {
     }
 
     private void print() {
-        System.out.println(scene.showScene().toString());
+        System.out.println(scene.getScene().toString());
     }
 
     private void reader() {

@@ -14,6 +14,10 @@ public class StateScene {
     public static final String WELCOME_SCENE = "WELCOME";
     public static final String CATEGORY_SCENE = "CATEGORY";
     public static final String PROJECT_SCENE = "PROJECT";
+
+    public static void goToNext() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     private String currentState;
     private boolean error;
 

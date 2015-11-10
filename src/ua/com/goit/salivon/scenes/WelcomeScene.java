@@ -5,6 +5,8 @@
  */
 package ua.com.goit.salivon.scenes;
 
+import ua.com.goit.salivon.handlers.HandlerError;
+import ua.com.goit.salivon.handlers.HandlerErrorFactory;
 import ua.com.goit.salivon.scenes.ViewScene;
 import ua.com.goit.salivon.stores.Quotes;
 import ua.com.goit.salivon.stores.StoreCategories;
@@ -17,6 +19,7 @@ public class WelcomeScene extends ViewScene {
 
     private StoreCategories categories;
     private Quotes quotes;
+    private HandlerError validator = new HandlerErrorFactory().;
 
     public WelcomeScene(StoreCategories store) {
         quotes = new Quotes();
@@ -30,10 +33,18 @@ public class WelcomeScene extends ViewScene {
     @Override
     protected void createScene() {
 
-        textScene.append(quotes.getQuote() + "\n");
-        textScene.append(categories.getAllCategories());
-        textScene.append("--------------------------------------------------\n");
-        textScene.append(menu);
+    }
 
+    @Override
+    protected void validate(String line) {
+        validator.validate(line);
+    }
+
+    @Override
+    protected void showScene() {
+        System.out.println((quotes.getQuote() + "\n"));
+        System.out.println(categories.getAllCategories());
+        System.out.println("--------------------------------------------------\n");
+        System.out.println(menu);
     }
 }
