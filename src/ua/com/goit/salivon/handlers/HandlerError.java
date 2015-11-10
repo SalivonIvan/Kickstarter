@@ -9,6 +9,6 @@ package ua.com.goit.salivon.handlers;
  *
  * @author salivon.i
  */
-public interface HendlingError {
+public interface HandlerError {
     boolean validate(String outConsole);
 }

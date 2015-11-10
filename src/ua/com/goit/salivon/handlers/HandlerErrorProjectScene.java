@@ -5,38 +5,28 @@
  */
 package ua.com.goit.salivon.handlers;
 
-import ua.com.goit.salivon.handlers.HendlingError;
-import ua.com.goit.salivon.stores.StoreCategories;
+import ua.com.goit.salivon.handlers.HandlerError;
 
 /**
  *
  * @author salivon.i
  */
-public class HendlingErrorWelcomScene implements HendlingError {
-
-    StoreCategories categories;
-
-    public HendlingErrorWelcomScene(StoreCategories categories) {
-        this.categories = categories;
-    }
+public class HandlerErrorProjectScene implements HandlerError {
 
     @Override
     public boolean validate(String inConsole) {
-        if (inConsole==null) {
-            return true;
-        }
-        try {
 
+        try {
             int n = Integer.parseInt(inConsole);
-            if (n - 1 >= 0 && n - 1 < categories.getCategories().size()) {
+            if (n == 0) {
                 return true;
             } else {
                 return false;
             }
-
         } catch (NumberFormatException e) {
             if (inConsole.equalsIgnoreCase("q")) {
                 return true;
+
             }
             return false;
         }

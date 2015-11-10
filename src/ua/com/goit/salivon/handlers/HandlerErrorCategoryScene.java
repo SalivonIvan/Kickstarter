@@ -5,7 +5,7 @@
  */
 package ua.com.goit.salivon.handlers;
 
-import ua.com.goit.salivon.handlers.HendlingError;
+import ua.com.goit.salivon.handlers.HandlerError;
 import ua.com.goit.salivon.beans.Project;
 import ua.com.goit.salivon.stores.StoreProjects;
 
@@ -13,12 +13,12 @@ import ua.com.goit.salivon.stores.StoreProjects;
  *
  * @author salivon.i
  */
-public class HendlingErrorCategoryScene implements HendlingError {
+public class HandlerErrorCategoryScene implements HandlerError {
 
     private StoreProjects projects;
     private int idCategory;
 
-    public HendlingErrorCategoryScene(StoreProjects projects, int indexCategory) {
+    public HandlerErrorCategoryScene(StoreProjects projects, int indexCategory) {
         this.projects = projects;
         this.idCategory = indexCategory - 1;
     }

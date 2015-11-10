@@ -5,8 +5,8 @@
  */
 package ua.com.goit.salivon.handlers;
 
-import ua.com.goit.salivon.handlers.HendlingErrorCategoryScene;
-import ua.com.goit.salivon.handlers.HendlingError;
+import ua.com.goit.salivon.handlers.HandlerErrorCategoryScene;
+import ua.com.goit.salivon.handlers.HandlerError;
 import ua.com.goit.salivon.stores.StoreProjects;
 import ua.com.goit.salivon.stores.StoreCategories;
 
@@ -14,15 +14,15 @@ import ua.com.goit.salivon.stores.StoreCategories;
  *
  * @author salivon.i
  */
-public class HendlingErrorFactory {
+public class HandlerErrorFactory {
 
-    public HendlingError getHendlingError(String stateScene, StoreCategories categories, StoreProjects projects, int index) {
+    public HandlerError getHendlingError(String stateScene, StoreCategories categories, StoreProjects projects, int index) {
         if (stateScene.equalsIgnoreCase("WELCOME")) {
-            return new HendlingErrorWelcomScene(categories);
+            return new HandlerErrorWelcomScene(categories);
         } else if (stateScene.equalsIgnoreCase("CATEGORY")) {
-            return new HendlingErrorCategoryScene(projects,index);
+            return new HandlerErrorCategoryScene(projects,index);
         } else if (stateScene.equalsIgnoreCase("PROJECT")) {
-            return new HendlingErrorProjectScene();
+            return new HandlerErrorProjectScene();
         }
         return null;
     }

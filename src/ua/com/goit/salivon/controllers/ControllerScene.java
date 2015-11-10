@@ -5,8 +5,8 @@
  */
 package ua.com.goit.salivon.controllers;
 
-import ua.com.goit.salivon.handlers.HendlingError;
-import ua.com.goit.salivon.handlers.HendlingErrorFactory;
+import ua.com.goit.salivon.handlers.HandlerError;
+import ua.com.goit.salivon.handlers.HandlerErrorFactory;
 import ua.com.goit.salivon.scenes.SceneFactory;
 import ua.com.goit.salivon.models.StateScene;
 import ua.com.goit.salivon.scenes.ViewScene;
@@ -98,7 +98,7 @@ public class ControllerScene {
     }
 
     private void verificationData() {
-        HendlingError hend = new HendlingErrorFactory().getHendlingError(state.getCurrentState(), categories, projects, indexCategory);
+        HandlerError hend = new HandlerErrorFactory().getHendlingError(state.getCurrentState(), categories, projects, indexCategory);
         if (!hend.validate(inData)) {
             state.setError(true);
             return;
