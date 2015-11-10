@@ -27,12 +27,21 @@ public class ControllerScene {
     private StoreCategories categories;
     private StoreProjects projects;
     private int indexCategory;
-    
+    private Console console;
+
     public ControllerScene() {
         categories = new StoreCategories();
         projects = new StoreProjects();
         this.state = new StateScene();
-        
+        console = new Console();
+
+    }
+
+    public void launchProgram() {
+        String inData = console.getInData();
+        getViewScene(inData);
+        console.execute(scene);
+        launchProgram();
     }
 
     private void downloadScene() {
@@ -40,12 +49,12 @@ public class ControllerScene {
         scene = factory.getViewScene(state, categories, projects, indexCategory, indexProject);
     }
 
-    public StringBuilder getAnswer(String inStr) {
-        defineInData(inStr);
+    public void getViewScene(String inConsole) {
+        defineInData(inConsole);
         verificationData();
         changeState();
         downloadScene();
-        return scene.showScene();
+
     }
 
     private void defineInData(String in) {

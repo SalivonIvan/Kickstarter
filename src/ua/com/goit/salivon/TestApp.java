@@ -5,18 +5,13 @@
  */
 package ua.com.goit.salivon;
 
-import ua.com.goit.salivon.view.Console;
+import ua.com.goit.salivon.controllers.ControllerScene;
 
-/**
- *
- * @author Оля
- */
 public class TestApp {
 
     public static void main(String[] args) {
-        Console con = new Console();
-        con.execute();
-
+        ControllerScene cs = new ControllerScene();
+        cs.launchProgram();
     }
 
 }

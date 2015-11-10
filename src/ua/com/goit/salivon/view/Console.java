@@ -7,6 +7,7 @@ package ua.com.goit.salivon.view;
 
 import ua.com.goit.salivon.controllers.ControllerScene;
 import java.util.Scanner;
+import ua.com.goit.salivon.scenes.ViewScene;
 
 /**
  *
@@ -14,41 +15,45 @@ import java.util.Scanner;
  */
 public class Console {
 
-    private StringBuilder scene;
+    private ViewScene scene;
     private String inData;
-    private ControllerScene controller;
     private Scanner scan;
 
     public Console() {
-        controller = new ControllerScene();
         scan = new Scanner(System.in);
     }
 
-    private void setScene() {
-        scene = controller.getAnswer(inData);
+    public String getInData() {
+        return inData;
+    }
+
+    private void setScene(ViewScene scene) {
+        this.scene = scene;
     }
 
     private void print() {
-        System.out.println(scene.toString());
+        System.out.println(scene.showScene().toString());
     }
 
-    private  void reader() {
+    private void reader() {
         inData = scan.next();
     }
 
-    private  void closeStream() {
+    private void closeStream() {
         scan.close();
     }
-    public void execute(){
-        setScene();
+
+    public void execute(ViewScene scene) {
+        setScene(scene);
         print();
         reader();
         if (inData.equalsIgnoreCase("q")) {
             System.out.println("Goodbye my LORD!");
             closeStream();
-            return ;
+            Runtime.getRuntime().exit(0);
+            return;
         }
-        execute();
+
     }
 
 }
