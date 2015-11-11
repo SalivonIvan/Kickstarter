@@ -15,35 +15,22 @@ import ua.com.goit.salivon.beans.Project;
  */
 public class StoreProjects {
 
-    private List<Project> projects = new ArrayList<>();
+    private static List<Project> projects = new ArrayList<>();
 
-    {
-        projects.add(new Project("Circle", 10, 0));
-        projects.add(new Project("Elips", 17, 0));
-        projects.add(new Project("Line", 4, 0));
-        projects.add(new Project("The Man with Ten Thousand Eyes", 241, 1));
-        projects.add(new Project("SkyHeart Book I: The Star Seed", 258, 1));
-        projects.add(new Project("Deeds Not Words", 541, 1));
-        projects.add(new Project("Failsafe", 1025, 2));
-        projects.add(new Project("Centauri Saga", 3527, 2));
-        
+    static {
+        projects.add(new Project("Circle", 10, 1));
+        projects.add(new Project("Elips", 17, 1));
+        projects.add(new Project("Line", 4, 1));
+        projects.add(new Project("The Man with Ten Thousand Eyes", 241, 2));
+        projects.add(new Project("SkyHeart Book I: The Star Seed", 258, 2));
+        projects.add(new Project("Deeds Not Words", 541, 2));
+        projects.add(new Project("Failsafe", 1025, 3));
+        projects.add(new Project("Centauri Saga", 3527, 3));
+
     }
 
-    public void addProject(Project project) {
-        projects.add(project);
-    }
-
-    public void removeProject(Project project) {
-        projects.remove(project);
-    }
-
-    public Project getProject(int index) {
-        return projects.get(index);
-    }
-
-    public List<Project> getProjects() {
+    public static List<Project> getProjects() {
         return projects;
     }
-    
-    
+
 }

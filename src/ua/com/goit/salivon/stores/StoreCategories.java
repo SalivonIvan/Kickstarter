@@ -15,35 +15,16 @@ import ua.com.goit.salivon.beans.Category;
  */
 public class StoreCategories {
 
-    List<Category> categories = new ArrayList<>();
+    static List<Category> categories = new ArrayList<>();
 
-    {
+  static   {
         categories.add(new Category("Art"));
         categories.add(new Category("Comics"));
         categories.add(new Category("Games"));
     }
 
-    public void addCategory(Category project) {
-        categories.add(project);
-    }
-
-    public void removeCategory(int idCategory) {
-//        categories.remove(idCategory);
-    }
-
-    public Category getCategory(int idCategory) {
-        return categories.get(idCategory);
-    }
-
-    public List<Category> getCategories() {
+    public static List<Category> getCategories() {
         return categories;
     }
 
-    public String getAllCategories() {
-        String str = "Categories:\n";
-        for (int i = 0; i < categories.size(); i++) {
-            str += categories.get(i).getId() + " - " + categories.get(i).getName() + "\n";
-        }
-        return str;
-    }
 }

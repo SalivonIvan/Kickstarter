@@ -5,10 +5,19 @@
  */
 package ua.com.goit.salivon.handlers;
 
+import ua.com.goit.salivon.state.State;
+
 /**
  *
  * @author salivon.i
  */
-public interface HandlerError {
-    boolean validate(String outConsole);
+public abstract class HandlerError {
+
+    public abstract boolean validate(String outConsole);
+
+    void exit() {
+        System.out.println("Goodbye my LORD!");
+        State.getScan().close();
+        Runtime.getRuntime().exit(0);
+    }
 }

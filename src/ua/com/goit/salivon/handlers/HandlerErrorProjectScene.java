@@ -11,22 +11,19 @@ import ua.com.goit.salivon.handlers.HandlerError;
  *
  * @author salivon.i
  */
-public class HandlerErrorProjectScene implements HandlerError {
+public class HandlerErrorProjectScene extends HandlerError {
 
     @Override
-    public boolean validate(String inConsole) {
+    public boolean validate(String inDate) {
 
         try {
-            int n = Integer.parseInt(inConsole);
-            if (n == 0) {
-                return true;
-            } else {
-                return false;
-            }
-        } catch (NumberFormatException e) {
-            if (inConsole.equalsIgnoreCase("q")) {
-                return true;
+            int n = Integer.parseInt(inDate);
 
+            return n == 0 || n == 1 || n == 2;
+
+        } catch (NumberFormatException e) {
+            if (inDate.equalsIgnoreCase("q")) {
+                exit();
             }
             return false;
         }

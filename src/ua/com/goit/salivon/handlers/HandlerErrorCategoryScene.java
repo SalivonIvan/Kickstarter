@@ -5,39 +5,36 @@
  */
 package ua.com.goit.salivon.handlers;
 
+import java.util.List;
+import ua.com.goit.salivon.beans.Category;
 import ua.com.goit.salivon.handlers.HandlerError;
 import ua.com.goit.salivon.beans.Project;
+import ua.com.goit.salivon.state.State;
+import ua.com.goit.salivon.stores.StoreCategories;
 import ua.com.goit.salivon.stores.StoreProjects;
 
 /**
  *
  * @author salivon.i
  */
-public class HandlerErrorCategoryScene implements HandlerError {
+public class HandlerErrorCategoryScene extends HandlerError {
 
-    private StoreProjects projects;
-    private int idCategory;
-
-    public HandlerErrorCategoryScene(StoreProjects projects, int indexCategory) {
-        this.projects = projects;
-        this.idCategory = indexCategory - 1;
-    }
+    private List<Category> categories = StoreCategories.getCategories();
+    private List<Project> projects = StoreProjects.getProjects();
 
     @Override
-    public boolean validate(String inConsole) {
+    public boolean validate(String inDate) {
         try {
-            int n = Integer.parseInt(inConsole);
-            if (n==0) {
+            int n = Integer.parseInt(inDate);
+            if (n == 0) {
                 return true;
             }
-            if (n-1 >= 0 && n -1< projects.getProjects().size()&&hasProject(n)) {
-                return true;
-            } else {
-                return false;
-            }
+
+            return n - 1 >= 0 && n - 1 < projects.size() && hasProject(n);
+
         } catch (NumberFormatException e) {
-            if (inConsole.equalsIgnoreCase("q")) {
-                return true;
+            if (inDate.equalsIgnoreCase("q")) {
+                exit();
             }
             return false;
         }
@@ -45,8 +42,9 @@ public class HandlerErrorCategoryScene implements HandlerError {
     }
 
     private boolean hasProject(int num) {
-        Project p = projects.getProject(num - 1);
-        if (p.getIdCategory() == idCategory) {
+        Project p = projects.get(num - 1);
+        System.out.println("idCategory - " + State.getIndexCategory());
+        if (p.getIdCategory() == State.getIndexCategory()) {
             return true;
         } else {
             return false;

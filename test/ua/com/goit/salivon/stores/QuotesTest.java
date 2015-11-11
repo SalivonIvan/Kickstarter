@@ -42,13 +42,13 @@ public class QuotesTest {
     }
 
     /**
-     * Test of getQuote method, of class Quotes.
+     * Test of getQuote method, of class StoreQuotes.
      */
     @Test
     @Ignore
     public void testPrintQuote() {
         System.out.println("printQuote");
-        Quotes instance = new Quotes();
+        StoreQuotes instance = new StoreQuotes();
         String result = instance.getQuote();
         if (result instanceof String) {
             System.out.println(result);
@@ -60,7 +60,7 @@ public class QuotesTest {
     @Test
     public void testRandomQuote() {
         System.out.println("randomQuote");
-        Quotes instance = new Quotes();
+        StoreQuotes instance = new StoreQuotes();
         int count = instance.getQuotes().size();
         List<String> quotes = new ArrayList<>();
         List<String> authors = new ArrayList<>();
