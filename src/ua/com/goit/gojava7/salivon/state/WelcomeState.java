@@ -3,16 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ua.com.goit.salivon.state;
+package ua.com.goit.gojava7.salivon.state;
 
 import java.util.List;
-import ua.com.goit.salivon.beans.Category;
-import ua.com.goit.salivon.handlers.HandlerError;
-import ua.com.goit.salivon.handlers.HandlerErrorWelcomScene;
-import ua.com.goit.salivon.state.State;
-import ua.com.goit.salivon.stores.StoreQuotes;
-import ua.com.goit.salivon.stores.StoreCategories;
-import ua.com.goit.salivon.view.Console;
+import ua.com.goit.gojava7.salivon.beans.Category;
+import ua.com.goit.gojava7.salivon.handlers.HandlerError;
+import ua.com.goit.gojava7.salivon.handlers.HandlerErrorWelcomScene;
+import ua.com.goit.gojava7.salivon.state.State;
+import ua.com.goit.gojava7.salivon.stores.StoreQuotes;
+import ua.com.goit.gojava7.salivon.stores.StoreCategories;
+import ua.com.goit.gojava7.salivon.view.Console;
 
 /**
  *

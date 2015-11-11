@@ -5,6 +5,7 @@
  */
 package ua.com.goit.salivon.stores;
 
+import ua.com.goit.gojava7.salivon.stores.StoreQuotes;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;

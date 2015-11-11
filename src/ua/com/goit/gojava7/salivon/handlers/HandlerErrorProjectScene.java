@@ -3,28 +3,24 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ua.com.goit.salivon.handlers;
+package ua.com.goit.gojava7.salivon.handlers;
 
-import java.util.List;
-import ua.com.goit.salivon.beans.Category;
-import ua.com.goit.salivon.handlers.HandlerError;
-import ua.com.goit.salivon.state.State;
-import ua.com.goit.salivon.stores.StoreCategories;
+import ua.com.goit.gojava7.salivon.handlers.HandlerError;
 
 /**
  *
  * @author salivon.i
  */
-public class HandlerErrorWelcomScene extends HandlerError {
-
-    List<Category> categories = StoreCategories.getCategories();
+public class HandlerErrorProjectScene extends HandlerError {
 
     @Override
     public boolean validate(String inDate) {
 
         try {
             int n = Integer.parseInt(inDate);
-            return n - 1 >= 0 && n - 1 < categories.size();
+
+            return n == 0 || n == 1 || n == 2;
+
         } catch (NumberFormatException e) {
             if (inDate.equalsIgnoreCase("q")) {
                 exit();

@@ -3,15 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ua.com.goit.salivon.view;
+package ua.com.goit.gojava7.salivon.view;
 
 import java.util.Scanner;
-import ua.com.goit.salivon.state.CategoryState;
-import ua.com.goit.salivon.state.ProjectState;
-import ua.com.goit.salivon.state.State;
-import ua.com.goit.salivon.state.WelcomeState;
-import ua.com.goit.salivon.stores.StoreCategories;
-import ua.com.goit.salivon.stores.StoreProjects;
+import ua.com.goit.gojava7.salivon.state.CategoryState;
+import ua.com.goit.gojava7.salivon.state.ProjectState;
+import ua.com.goit.gojava7.salivon.state.State;
+import ua.com.goit.gojava7.salivon.state.WelcomeState;
+import ua.com.goit.gojava7.salivon.stores.StoreCategories;
+import ua.com.goit.gojava7.salivon.stores.StoreProjects;
 
 /**
  *

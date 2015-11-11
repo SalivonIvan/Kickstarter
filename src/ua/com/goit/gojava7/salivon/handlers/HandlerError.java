@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ua.com.goit.salivon.handlers;
+package ua.com.goit.gojava7.salivon.handlers;
 
-import ua.com.goit.salivon.state.State;
+import ua.com.goit.gojava7.salivon.state.State;
 
 /**
  *

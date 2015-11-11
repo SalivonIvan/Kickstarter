@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ua.com.goit.salivon;
+package ua.com.goit.gojava7.salivon;
 
-import ua.com.goit.salivon.view.Console;
+import ua.com.goit.gojava7.salivon.view.Console;
 
 public class TestApp {
 

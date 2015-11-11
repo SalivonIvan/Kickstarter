@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ua.com.goit.salivon.state;
+package ua.com.goit.gojava7.salivon.state;
 
 import java.util.Scanner;
-import ua.com.goit.salivon.handlers.HandlerError;
-import ua.com.goit.salivon.view.Console;
+import ua.com.goit.gojava7.salivon.handlers.HandlerError;
+import ua.com.goit.gojava7.salivon.view.Console;
 
 /**
  *
