@@ -43,7 +43,6 @@ public class HandlerErrorCategoryScene extends HandlerError {
 
     private boolean hasProject(int num) {
         Project p = projects.get(num - 1);
-        System.out.println("idCategory - " + State.getIndexCategory());
         if (p.getIdCategory() == State.getIndexCategory()) {
             return true;
         } else {
