@@ -11,13 +11,8 @@ import ua.com.goit.gojava7.salivon.state.State;
  *
  * @author salivon.i
  */
-public abstract class ErrorHandler {
+public interface ErrorHandler {
 
     public abstract boolean validate(String inDate);
 
-    void exit() {
-        System.out.println("Goodbye my LORD!");
-        State.getScan().close();
-        Runtime.getRuntime().exit(0);
-    }
 }

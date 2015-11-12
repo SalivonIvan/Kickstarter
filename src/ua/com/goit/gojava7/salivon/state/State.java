@@ -20,7 +20,7 @@ public abstract class State {
     protected ErrorHandler handler;
     private static int indexCategory;
     private static int indexProject;
-   
+
     public static Scanner getScan() {
         return scan;
     }
@@ -42,19 +42,43 @@ public abstract class State {
     }
 
     public void verification(Console context) {
-        String inData = readUserInformations();
-        if (!handler.validate(inData)) {
-            System.out.println("Enter the correct data!");
-            verification(context);
-
-        } else {
-            changeState(context, inData);
+//        String inData = readUserInformations();
+//         if (inData.equalsIgnoreCase("q")) {
+//                exit();
+//            }
+//        if (!handler.validate(inData)) {
+//            System.out.println("Enter the correct data!");
+//            System.out.println(menu);
+//            verification(context);
+//
+//        } else {
+//            changeState(context, inData);
+//        }
+        while (true) {
+            String inData = readUserInformations();
+            if (inData.equalsIgnoreCase("q")) {
+                exit();
+            }
+            if (!handler.validate(inData)) {
+                System.out.println("Enter the correct data!");
+                System.out.println(menu);
+                continue;
+            } else {
+                changeState(context, inData);
+                return;
+            }
         }
     }
 
     public String readUserInformations() {
         String inData = State.scan.next();
         return inData;
+    }
+
+    void exit() {
+        System.out.println("Goodbye my LORD!");
+        State.getScan().close();
+        Runtime.getRuntime().exit(0);
     }
 
     public abstract void outputContentState();

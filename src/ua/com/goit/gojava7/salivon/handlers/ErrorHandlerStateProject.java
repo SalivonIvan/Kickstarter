@@ -11,7 +11,7 @@ import ua.com.goit.gojava7.salivon.handlers.ErrorHandler;
  *
  * @author salivon.i
  */
-public class ErrorHandlerStateProject extends ErrorHandler {
+public class ErrorHandlerStateProject implements ErrorHandler {
 
     @Override
     public boolean validate(String inDate) {
@@ -22,9 +22,6 @@ public class ErrorHandlerStateProject extends ErrorHandler {
             return n == 0 || n == 1 || n == 2;
 
         } catch (NumberFormatException e) {
-            if (inDate.equalsIgnoreCase("q")) {
-                exit();
-            }
             return false;
         }
 

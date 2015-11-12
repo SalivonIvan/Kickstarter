@@ -15,7 +15,7 @@ import ua.com.goit.gojava7.salivon.stores.StoreCategories;
  *
  * @author salivon.i
  */
-public class ErrorHandlerStateWelcom extends ErrorHandler {
+public class ErrorHandlerStateWelcom implements ErrorHandler {
 
     List<Category> categories = StoreCategories.getCategories();
 
@@ -26,9 +26,6 @@ public class ErrorHandlerStateWelcom extends ErrorHandler {
             int n = Integer.parseInt(inDate);
             return n - 1 >= 0 && n - 1 < categories.size();
         } catch (NumberFormatException e) {
-            if (inDate.equalsIgnoreCase("q")) {
-                exit();
-            }
             return false;
         }
 

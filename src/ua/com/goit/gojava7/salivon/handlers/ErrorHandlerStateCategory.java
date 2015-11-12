@@ -17,7 +17,7 @@ import ua.com.goit.gojava7.salivon.stores.StoreProjects;
  *
  * @author salivon.i
  */
-public class ErrorHandlerStateCategory extends ErrorHandler {
+public class ErrorHandlerStateCategory implements ErrorHandler {
 
     private List<Category> categories = StoreCategories.getCategories();
     private List<Project> projects = StoreProjects.getProjects();
@@ -33,9 +33,6 @@ public class ErrorHandlerStateCategory extends ErrorHandler {
             return n - 1 >= 0 && n - 1 < projects.size() && hasProject(n);
 
         } catch (NumberFormatException e) {
-            if (inDate.equalsIgnoreCase("q")) {
-                exit();
-            }
             return false;
         }
 
