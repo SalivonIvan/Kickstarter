@@ -11,7 +11,7 @@ import ua.com.goit.gojava7.salivon.handlers.HandlerError;
  *
  * @author salivon.i
  */
-public class HandlerErrorProjectScene extends HandlerError {
+public class HandlerErrorProjectState extends HandlerError {
 
     @Override
     public boolean validate(String inDate) {

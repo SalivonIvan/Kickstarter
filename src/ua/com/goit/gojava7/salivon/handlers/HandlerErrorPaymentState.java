@@ -5,33 +5,38 @@
  */
 package ua.com.goit.gojava7.salivon.handlers;
 
-import java.util.List;
-import ua.com.goit.gojava7.salivon.beans.Category;
-import ua.com.goit.gojava7.salivon.handlers.HandlerError;
 import ua.com.goit.gojava7.salivon.state.State;
-import ua.com.goit.gojava7.salivon.stores.StoreCategories;
 
 /**
  *
- * @author salivon.i
+ * @author Salivon Ivan
  */
-public class HandlerErrorWelcomScene extends HandlerError {
-
-    List<Category> categories = StoreCategories.getCategories();
+public class HandlerErrorPaymentState extends HandlerError {
 
     @Override
     public boolean validate(String inDate) {
-
         try {
             int n = Integer.parseInt(inDate);
-            return n - 1 >= 0 && n - 1 < categories.size();
+
+            return n == 0;
+
         } catch (NumberFormatException e) {
             if (inDate.equalsIgnoreCase("q")) {
                 exit();
             }
             return false;
         }
+    }
 
+    public int validateAmount(String inData) {
+        int amount = 0;
+        try {
+            amount = Integer.parseInt(inData);
+        } catch (Exception e) {
+            System.out.println("Enter the correct data!");
+            validateAmount(State.getScan().next());
+        }
+        return amount;
     }
 
 }

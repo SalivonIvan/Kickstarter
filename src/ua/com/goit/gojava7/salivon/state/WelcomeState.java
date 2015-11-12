@@ -8,7 +8,7 @@ package ua.com.goit.gojava7.salivon.state;
 import java.util.List;
 import ua.com.goit.gojava7.salivon.beans.Category;
 import ua.com.goit.gojava7.salivon.handlers.HandlerError;
-import ua.com.goit.gojava7.salivon.handlers.HandlerErrorWelcomScene;
+import ua.com.goit.gojava7.salivon.handlers.HandlerErrorWelcomState;
 import ua.com.goit.gojava7.salivon.state.State;
 import ua.com.goit.gojava7.salivon.stores.StoreQuotes;
 import ua.com.goit.gojava7.salivon.stores.StoreCategories;
@@ -23,7 +23,7 @@ public class WelcomeState extends State {
     private List<Category> categories = StoreCategories.getCategories();
 
     public WelcomeState() {
-        handler = new HandlerErrorWelcomScene();
+        handler = new HandlerErrorWelcomState();
         menu = "Enter the number of categories to select it.\n"
                 + "Enter 'q' to exit.\n";
 

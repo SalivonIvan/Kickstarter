@@ -7,6 +7,7 @@ package ua.com.goit.gojava7.salivon.view;
 
 import java.util.Scanner;
 import ua.com.goit.gojava7.salivon.state.CategoryState;
+import ua.com.goit.gojava7.salivon.state.PaymentState;
 import ua.com.goit.gojava7.salivon.state.ProjectState;
 import ua.com.goit.gojava7.salivon.state.State;
 import ua.com.goit.gojava7.salivon.state.WelcomeState;
@@ -22,6 +23,7 @@ public class Console {
     private State welcomState;
     private State categoryState;
     private State projectState;
+    private State paymentState;
     private State currentState;
     private String inData;
     private Scanner scan;
@@ -30,12 +32,21 @@ public class Console {
         welcomState = new WelcomeState();
         categoryState = new CategoryState();
         projectState = new ProjectState();
+        paymentState = new PaymentState();
         scan = new Scanner(System.in);
         currentState = welcomState;
     }
 
     public String getInData() {
         return inData;
+    }
+
+    public State getPaymentState() {
+        return paymentState;
+    }
+
+    public void setPaymentState(State paymentState) {
+        this.paymentState = paymentState;
     }
 
     public State getWelcomState() {

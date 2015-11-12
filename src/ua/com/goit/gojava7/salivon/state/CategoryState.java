@@ -10,7 +10,7 @@ import ua.com.goit.gojava7.salivon.beans.Project;
 import ua.com.goit.gojava7.salivon.stores.StoreProjects;
 import ua.com.goit.gojava7.salivon.stores.StoreCategories;
 import java.util.List;
-import ua.com.goit.gojava7.salivon.handlers.HandlerErrorCategoryScene;
+import ua.com.goit.gojava7.salivon.handlers.HandlerErrorCategoryState;
 import ua.com.goit.gojava7.salivon.view.Console;
 
 /**
@@ -23,7 +23,7 @@ public class CategoryState extends State {
     private List<Project> projects = StoreProjects.getProjects();
 
     public CategoryState() {
-        handler = new HandlerErrorCategoryScene();
+        handler = new HandlerErrorCategoryState();
         menu = "Enter the number of projects to select it.\n"
                 + "Enter 0 return to above.\n"
                 + "Enter 'q' to exit.\n";
@@ -42,7 +42,7 @@ public class CategoryState extends State {
                 System.out.println(list1.getId() + " - " + list1.getTitle());
                 System.out.println("  Description: " + list1.getDescription());
                 System.out.println("  Total " + list1.getTotal() + "$");
-                System.out.println("  Collected amount " + list1.getCollectedAmount());
+                System.out.println("  Collected amount " + list1.getCollectedAmount()+"%");
                 System.out.println("  Number of days to end " + list1.getNumberOfDaysToEnd() + "\n");
             }
         }

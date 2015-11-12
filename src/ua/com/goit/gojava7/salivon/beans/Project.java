@@ -7,6 +7,7 @@ package ua.com.goit.gojava7.salivon.beans;
 
 import java.util.Calendar;
 import java.util.Date;
+
 /**
  *
  * @author salivon.i
@@ -47,6 +48,13 @@ public class Project {
         return historyProject;
     }
 
+    public int getCollectedAmount() {
+        return collectedAmount;
+    }
+    public void setCollectedAmount(int collectedAmount) {
+        this.collectedAmount += collectedAmount;
+    }
+
     public String getLink() {
         return link;
     }
@@ -55,9 +63,6 @@ public class Project {
         return faq;
     }
 
-    public int getCollectedAmount() {
-        return collectedAmount;
-    }
 
     public int getTotal() {
         return total;

@@ -13,7 +13,7 @@ import ua.com.goit.gojava7.salivon.state.State;
  */
 public abstract class HandlerError {
 
-    public abstract boolean validate(String outConsole);
+    public abstract boolean validate(String inDate);
 
     void exit() {
         System.out.println("Goodbye my LORD!");
