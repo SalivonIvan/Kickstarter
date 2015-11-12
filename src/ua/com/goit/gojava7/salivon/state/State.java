@@ -7,7 +7,7 @@ package ua.com.goit.gojava7.salivon.state;
 
 import java.util.Scanner;
 import ua.com.goit.gojava7.salivon.handlers.ErrorHandler;
-import ua.com.goit.gojava7.salivon.view.Console;
+import ua.com.goit.gojava7.salivon.context.Console;
 
 /**
  *

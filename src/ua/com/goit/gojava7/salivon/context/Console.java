@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ua.com.goit.gojava7.salivon.view;
+package ua.com.goit.gojava7.salivon.context;
 
 import java.util.Scanner;
 import ua.com.goit.gojava7.salivon.state.CategoryState;

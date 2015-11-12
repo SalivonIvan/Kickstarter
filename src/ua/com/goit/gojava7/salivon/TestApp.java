@@ -5,7 +5,7 @@
  */
 package ua.com.goit.gojava7.salivon;
 
-import ua.com.goit.gojava7.salivon.view.Console;
+import ua.com.goit.gojava7.salivon.context.Console;
 
 public class TestApp {
 
