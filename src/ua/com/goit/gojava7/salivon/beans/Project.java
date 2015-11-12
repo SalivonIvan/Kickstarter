@@ -7,8 +7,6 @@ package ua.com.goit.gojava7.salivon.beans;
 
 import java.util.Calendar;
 import java.util.Date;
-import ua.com.goit.gojava7.salivon.IdProject;
-
 /**
  *
  * @author salivon.i
@@ -27,7 +25,7 @@ public class Project {
     private String link;
     private String faq;
 
-    public Project(String title, int total, int idCategory) {
+    public Project(String title, int total, int idCategory, int id) {
         setDateStart();
         description = "...description...";
         collectedAmount = 0;
@@ -37,7 +35,7 @@ public class Project {
         historyProject = "...history...";
         link = "...link...";
         faq = "...FAQ...";
-        setId();
+        this.id = id;
     }
 
     private void setDateStart() {
@@ -84,10 +82,8 @@ public class Project {
         return numberOfDaysInWork - numberOfDaysToImplement;
     }
 
-    private void setId() {
-        IdProject ic = IdProject.getInstance();
-        id = ic.getNumberId();
-        ic.setNumberId();
+    private void setId(int id) {
+        this.id = id;
     }
 
     public int getId() {

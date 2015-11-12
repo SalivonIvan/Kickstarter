@@ -17,10 +17,10 @@ public class StoreCategories {
 
     static List<Category> categories = new ArrayList<>();
 
-  static   {
-        categories.add(new Category("Art"));
-        categories.add(new Category("Comics"));
-        categories.add(new Category("Games"));
+    static {
+        categories.add(new Category("Art", 1));
+        categories.add(new Category("Comics", 2));
+        categories.add(new Category("Games", 3));
     }
 
     public static List<Category> getCategories() {

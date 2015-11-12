@@ -5,8 +5,6 @@
  */
 package ua.com.goit.gojava7.salivon.beans;
 
-import ua.com.goit.gojava7.salivon.IdCategory;
-
 /**
  *
  * @author salivon.i
@@ -16,15 +14,13 @@ public class Category {
     private int id;
     private String name;
 
-    public Category(String name) {
+    public Category(String name, int id) {
         this.name = name;
-        setId();
+        this.id = id;
     }
 
-    private void setId() {
-        IdCategory ic = IdCategory.getInstance();
-        id = ic.getNumberId();
-        ic.setNumberId();
+    private void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
