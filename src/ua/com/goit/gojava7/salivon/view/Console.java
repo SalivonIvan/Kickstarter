@@ -26,14 +26,12 @@ public class Console {
     private State paymentState;
     private State currentState;
     private String inData;
-    private Scanner scan;
 
     public Console() {
         welcomState = new WelcomeState();
         categoryState = new CategoryState();
         projectState = new ProjectState();
         paymentState = new PaymentState();
-        scan = new Scanner(System.in);
         currentState = welcomState;
     }
 

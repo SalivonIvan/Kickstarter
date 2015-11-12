@@ -11,7 +11,7 @@ import ua.com.goit.gojava7.salivon.state.State;
  *
  * @author salivon.i
  */
-public abstract class HandlerError {
+public abstract class ErrorHandler {
 
     public abstract boolean validate(String inDate);
 

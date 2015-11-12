@@ -7,7 +7,7 @@ package ua.com.goit.gojava7.salivon.handlers;
 
 import java.util.List;
 import ua.com.goit.gojava7.salivon.beans.Category;
-import ua.com.goit.gojava7.salivon.handlers.HandlerError;
+import ua.com.goit.gojava7.salivon.handlers.ErrorHandler;
 import ua.com.goit.gojava7.salivon.beans.Project;
 import ua.com.goit.gojava7.salivon.state.State;
 import ua.com.goit.gojava7.salivon.stores.StoreCategories;
@@ -17,7 +17,7 @@ import ua.com.goit.gojava7.salivon.stores.StoreProjects;
  *
  * @author salivon.i
  */
-public class HandlerErrorCategoryState extends HandlerError {
+public class ErrorHandlerStateCategory extends ErrorHandler {
 
     private List<Category> categories = StoreCategories.getCategories();
     private List<Project> projects = StoreProjects.getProjects();

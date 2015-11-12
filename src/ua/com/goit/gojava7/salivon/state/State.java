@@ -6,7 +6,7 @@
 package ua.com.goit.gojava7.salivon.state;
 
 import java.util.Scanner;
-import ua.com.goit.gojava7.salivon.handlers.HandlerError;
+import ua.com.goit.gojava7.salivon.handlers.ErrorHandler;
 import ua.com.goit.gojava7.salivon.view.Console;
 
 /**
@@ -17,7 +17,7 @@ public abstract class State {
 
     protected static Scanner scan = new Scanner(System.in);
     protected String menu;
-    protected HandlerError handler;
+    protected ErrorHandler handler;
     private static int indexCategory;
     private static int indexProject;
    

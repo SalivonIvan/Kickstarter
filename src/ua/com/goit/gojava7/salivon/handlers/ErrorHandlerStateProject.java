@@ -5,20 +5,21 @@
  */
 package ua.com.goit.gojava7.salivon.handlers;
 
-import ua.com.goit.gojava7.salivon.state.State;
+import ua.com.goit.gojava7.salivon.handlers.ErrorHandler;
 
 /**
  *
- * @author Salivon Ivan
+ * @author salivon.i
  */
-public class HandlerErrorPaymentState extends HandlerError {
+public class ErrorHandlerStateProject extends ErrorHandler {
 
     @Override
     public boolean validate(String inDate) {
+
         try {
             int n = Integer.parseInt(inDate);
 
-            return n == 0;
+            return n == 0 || n == 1 || n == 2;
 
         } catch (NumberFormatException e) {
             if (inDate.equalsIgnoreCase("q")) {
@@ -26,17 +27,7 @@ public class HandlerErrorPaymentState extends HandlerError {
             }
             return false;
         }
-    }
 
-    public int validateAmount(String inData) {
-        int amount = 0;
-        try {
-            amount = Integer.parseInt(inData);
-        } catch (Exception e) {
-            System.out.println("Enter the correct data!");
-            validateAmount(State.getScan().next());
-        }
-        return amount;
     }
 
 }

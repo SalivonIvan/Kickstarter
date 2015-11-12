@@ -7,7 +7,7 @@ package ua.com.goit.gojava7.salivon.state;
 
 import java.util.List;
 import ua.com.goit.gojava7.salivon.beans.Project;
-import ua.com.goit.gojava7.salivon.handlers.HandlerErrorProjectState;
+import ua.com.goit.gojava7.salivon.handlers.ErrorHandlerStateProject;
 import ua.com.goit.gojava7.salivon.stores.StoreProjects;
 import ua.com.goit.gojava7.salivon.view.Console;
 
@@ -20,7 +20,7 @@ public class ProjectState extends State {
     private List<Project> projects = StoreProjects.getProjects();
 
     public ProjectState() {
-        handler = new HandlerErrorProjectState();
+        handler = new ErrorHandlerStateProject();
         menu = "Enter 1 - invest in the project.\n"
                 + "Enter 2 - ask a question.\n"
                 + "Enter 0 - return to above.\n"

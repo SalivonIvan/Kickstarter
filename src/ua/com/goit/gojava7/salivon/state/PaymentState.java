@@ -7,7 +7,7 @@ package ua.com.goit.gojava7.salivon.state;
 
 import java.util.List;
 import ua.com.goit.gojava7.salivon.beans.Project;
-import ua.com.goit.gojava7.salivon.handlers.HandlerErrorPaymentState;
+import ua.com.goit.gojava7.salivon.handlers.ErrorHandlerStatePayment;
 import ua.com.goit.gojava7.salivon.stores.StoreProjects;
 import ua.com.goit.gojava7.salivon.view.Console;
 
@@ -18,11 +18,11 @@ import ua.com.goit.gojava7.salivon.view.Console;
 public class PaymentState extends State {
 
     private List<Project> projects = StoreProjects.getProjects();
-    HandlerErrorPaymentState handlerAmount;
+    ErrorHandlerStatePayment handlerAmount;
 
     public PaymentState() {
-        handler = new HandlerErrorPaymentState();
-        handlerAmount = (HandlerErrorPaymentState) handler;
+        handler = new ErrorHandlerStatePayment();
+        handlerAmount = (ErrorHandlerStatePayment) handler;
         menu = "Enter 0 - return to above.\n"
                 + "Enter 'q' - to exit.\n";
 

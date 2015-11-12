@@ -10,7 +10,7 @@ import ua.com.goit.gojava7.salivon.beans.Project;
 import ua.com.goit.gojava7.salivon.stores.StoreProjects;
 import ua.com.goit.gojava7.salivon.stores.StoreCategories;
 import java.util.List;
-import ua.com.goit.gojava7.salivon.handlers.HandlerErrorCategoryState;
+import ua.com.goit.gojava7.salivon.handlers.ErrorHandlerStateCategory;
 import ua.com.goit.gojava7.salivon.view.Console;
 
 /**
@@ -23,7 +23,7 @@ public class CategoryState extends State {
     private List<Project> projects = StoreProjects.getProjects();
 
     public CategoryState() {
-        handler = new HandlerErrorCategoryState();
+        handler = new ErrorHandlerStateCategory();
         menu = "Enter the number of projects to select it.\n"
                 + "Enter 0 return to above.\n"
                 + "Enter 'q' to exit.\n";
