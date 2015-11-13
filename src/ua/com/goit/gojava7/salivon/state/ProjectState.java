@@ -36,7 +36,7 @@ public class ProjectState extends State {
         System.out.println(project.getTitle());
         System.out.println("  Description: " + project.getDescription());
         System.out.println("  Total " + project.getTotal() + "$");
-        System.out.println("  Collected amount " + project.getCollectedAmount()+"$");
+        System.out.println("  Collected amount " + project.getCollectedAmount() + "$");
         System.out.println("  Number of days to end " + project.getNumberOfDaysToEnd());
         System.out.println("  History " + project.getHistoryProject());
         System.out.println("  Link " + project.getLink());
@@ -51,9 +51,9 @@ public class ProjectState extends State {
         if (inDateToInt == 0) {
             context.setCurrentState(new CategoryState());
         } else if (inDateToInt == 1) {
-            context.setCurrentState(new PaymentState());
-        } else {
-
+            context.setCurrentState(new NameInvestState());
+        } else if (inDateToInt == 2) {
+            context.setCurrentState(new QuestionState());
         }
     }
 

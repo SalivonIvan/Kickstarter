@@ -26,6 +26,7 @@ public class WelcomeState extends State {
         handler = new ErrorHandlerStateWelcom();
         menu = "Enter the number of categories to select it.\n"
                 + "Enter 'q' to exit.\n";
+        setCommandZero(false);
 
     }
 

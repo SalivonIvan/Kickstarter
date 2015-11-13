@@ -11,29 +11,18 @@ import ua.com.goit.gojava7.salivon.state.State;
  *
  * @author Salivon Ivan
  */
-public class ErrorHandlerStatePayment implements ErrorHandler {
+public class ErrorHandlerStateContributionAmount implements ErrorHandler {
 
     @Override
     public boolean validate(String inData) {
-        try {
-            int n = Integer.parseInt(inData);
-
-            return n == 0;
-
-        } catch (NumberFormatException e) {
-            return false;
-        }
-    }
-
-    public int validateAmount(String inData) {
-        int amount = 0;
+      int amount = 0;
         try {
             amount = Integer.parseInt(inData);
-        } catch (Exception e) {
-            System.out.println("Enter the correct data!");
-            validateAmount(State.getScan().next());
+        } catch (NumberFormatException e) {
+           
+            return false;
         }
-        return amount;
+        return true;
     }
-
+    
 }

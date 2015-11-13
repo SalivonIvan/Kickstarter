@@ -23,9 +23,9 @@ public class ErrorHandlerStateCategory implements ErrorHandler {
     private List<Project> projects = StoreProjects.getProjects();
 
     @Override
-    public boolean validate(String inDate) {
+    public boolean validate(String inData) {
         try {
-            int n = Integer.parseInt(inDate);
+            int n = Integer.parseInt(inData);
             if (n == 0) {
                 return true;
             }

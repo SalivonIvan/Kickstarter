@@ -63,6 +63,10 @@ public class Project {
         return faq;
     }
 
+    public void setFaq(String faq) {
+        this.faq = faq;
+    }
+
 
     public int getTotal() {
         return total;

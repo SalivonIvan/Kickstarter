@@ -20,10 +20,10 @@ public class ErrorHandlerStateWelcom implements ErrorHandler {
     List<Category> categories = StoreCategories.getCategories();
 
     @Override
-    public boolean validate(String inDate) {
+    public boolean validate(String inData) {
 
         try {
-            int n = Integer.parseInt(inDate);
+            int n = Integer.parseInt(inData);
             return n - 1 >= 0 && n - 1 < categories.size();
         } catch (NumberFormatException e) {
             return false;

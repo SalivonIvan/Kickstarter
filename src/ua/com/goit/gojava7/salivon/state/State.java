@@ -20,6 +20,24 @@ public abstract class State {
     protected ErrorHandler handler;
     private static int indexCategory;
     private static int indexProject;
+    private boolean commandExit = true;
+    private boolean commandZero = true;
+
+    public boolean isCommandZero() {
+        return commandZero;
+    }
+
+    public void setCommandZero(boolean commandZero) {
+        this.commandZero = commandZero;
+    }
+
+    public boolean getCommandExit() {
+        return commandExit;
+    }
+
+    public void setCommandExit(boolean commandExit) {
+        this.commandExit = commandExit;
+    }
 
     public static Scanner getScan() {
         return scan;
@@ -44,7 +62,7 @@ public abstract class State {
     public void verification(Console context) {
 //        String inData = readUserInformations();
 //         if (inData.equalsIgnoreCase("q")) {
-//                exit();
+//                performExit();
 //            }
 //        if (!handler.validate(inData)) {
 //            System.out.println("Enter the correct data!");
@@ -56,8 +74,12 @@ public abstract class State {
 //        }
         while (true) {
             String inData = readUserInformations();
-            if (inData.equalsIgnoreCase("q")) {
-                exit();
+            if (inData.equalsIgnoreCase("q") && commandExit) {
+                performExit();
+            }
+            if (inData.equals("0") && commandZero) {
+                changeState(context, inData);
+                return;
             }
             if (!handler.validate(inData)) {
                 System.out.println("Enter the correct data!");
@@ -75,7 +97,7 @@ public abstract class State {
         return inData;
     }
 
-    void exit() {
+    protected void performExit() {
         System.out.println("Goodbye my LORD!");
         State.getScan().close();
         Runtime.getRuntime().exit(0);

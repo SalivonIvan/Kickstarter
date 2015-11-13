@@ -15,39 +15,16 @@ import ua.com.goit.gojava7.salivon.context.Console;
  *
  * @author Salivon Ivan
  */
-public class PaymentState extends State {
+public abstract class PaymentState extends State {
 
-    private List<Project> projects = StoreProjects.getProjects();
-    ErrorHandlerStatePayment handlerAmount;
+    protected List<Project> projects = StoreProjects.getProjects();
 
     public PaymentState() {
-        handler = new ErrorHandlerStatePayment();
-        handlerAmount = (ErrorHandlerStatePayment) handler;
+        setCommandExit(false);
+        setCommandZero(false);
         menu = "Enter 0 - return to above.\n"
                 + "Enter 'q' - to exit.\n";
 
-    }
-
-    @Override
-    public void outputContentState() {
-        int index = State.getIndexProject() - 1;
-        Project project = projects.get(index);
-        System.out.println("Enter your name:");
-        String nameInvestor = State.scan.next();
-        System.out.println("Enter credit card number:");
-        String numberCreditCard = State.scan.next();
-        System.out.println("Enter the contribution amount:");
-        changeCollectedAmount(project, handlerAmount.validateAmount(State.getScan().next()));
-        System.out.println(menu);
-    }
-
-    @Override
-    protected void changeState(Console context, String inData) {
-        context.setCurrentState(new ProjectState());
-    }
-
-    protected void changeCollectedAmount(Project project, int amount) {
-        project.setCollectedAmount(amount);
     }
 
 }

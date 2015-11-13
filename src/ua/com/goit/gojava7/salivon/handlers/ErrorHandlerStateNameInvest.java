@@ -5,14 +5,15 @@
  */
 package ua.com.goit.gojava7.salivon.handlers;
 
-import ua.com.goit.gojava7.salivon.state.State;
-
 /**
  *
- * @author salivon.i
+ * @author Salivon Ivan
  */
-public interface ErrorHandler {
+public class ErrorHandlerStateNameInvest implements ErrorHandler{
 
-    public abstract boolean validate(String inData);
-
+    @Override
+    public boolean validate(String inData) {
+         return true;
+    }
+    
 }
