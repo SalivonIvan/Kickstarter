@@ -23,7 +23,7 @@ public class WelcomeState extends State {
 
     @Override
     public void outputContentState() {
-        System.out.println((StoreQuotes.getQuote() + "\n"));
+        System.out.println((StoreQuotes.getRandomQuote() + "\n"));
         String str = "Categories:\n";
         for (int i = 0; i < categories.size(); i++) {
             str += categories.get(i).getId() + " - " + categories.get(i).getName() + "\n";

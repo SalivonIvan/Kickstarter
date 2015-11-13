@@ -43,14 +43,14 @@ public class QuotesTest {
     }
 
     /**
-     * Test of getQuote method, of class StoreQuotes.
+     * Test of getRandomQuote method, of class StoreQuotes.
      */
     @Test
     @Ignore
     public void testPrintQuote() {
         System.out.println("printQuote");
         StoreQuotes instance = new StoreQuotes();
-        String result = instance.getQuote();
+        String result = instance.getRandomQuote();
         if (result instanceof String) {
             System.out.println(result);
         }
@@ -70,12 +70,12 @@ public class QuotesTest {
             System.out.println(r.nextDouble()*10);
         }
         for (int i = 0; i < count; i++) {
-            System.out.println(instance.getQuote());
+            System.out.println(instance.getRandomQuote());
 
-            if (i > 0 && instance.getQuote() != quotes.get(i - 1)) {
+            if (i > 0 && instance.getRandomQuote() != quotes.get(i - 1)) {
                 assertTrue(true);
             }
-            quotes.add(instance.getQuote());
+            quotes.add(instance.getRandomQuote());
         }
 
     }
