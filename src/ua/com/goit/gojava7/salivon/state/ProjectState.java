@@ -49,9 +49,9 @@ public class ProjectState extends State {
     protected void changeState(Console context, String inData) {
         int inDateToInt = Integer.parseInt(inData);
         if (inDateToInt == 0) {
-            context.setCurrentState(context.getCategoryState());
+            context.setCurrentState(new CategoryState());
         } else if (inDateToInt == 1) {
-            context.setCurrentState(context.getPaymentState());
+            context.setCurrentState(new PaymentState());
         } else {
 
         }

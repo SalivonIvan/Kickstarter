@@ -56,10 +56,10 @@ public class CategoryState extends State {
         int inDateToInt = Integer.parseInt(inData);
         if (inDateToInt == 0) {
 //            State.setIndexCategory(inDateToInt);
-            context.setCurrentState(context.getWelcomState());
+            context.setCurrentState(new WelcomeState());
         } else {
             State.setIndexProject(inDateToInt);
-            context.setCurrentState(context.getProjectState());
+            context.setCurrentState(new ProjectState());
         }
 
     }

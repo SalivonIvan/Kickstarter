@@ -20,43 +20,16 @@ import ua.com.goit.gojava7.salivon.stores.StoreProjects;
  */
 public class Console {
 
-    private State welcomState;
-    private State categoryState;
-    private State projectState;
-    private State paymentState;
     private State currentState;
     private String inData;
 
     public Console() {
-        welcomState = new WelcomeState();
-        categoryState = new CategoryState();
-        projectState = new ProjectState();
-        paymentState = new PaymentState();
-        currentState = welcomState;
+
+        currentState = new WelcomeState();
     }
 
     public String getInData() {
         return inData;
-    }
-
-    public State getPaymentState() {
-        return paymentState;
-    }
-
-    public void setPaymentState(State paymentState) {
-        this.paymentState = paymentState;
-    }
-
-    public State getWelcomState() {
-        return welcomState;
-    }
-
-    public State getCategoryState() {
-        return categoryState;
-    }
-
-    public State getProjectState() {
-        return projectState;
     }
 
     public State getCurrentState() {

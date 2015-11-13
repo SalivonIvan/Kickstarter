@@ -43,7 +43,7 @@ public class PaymentState extends State {
 
     @Override
     protected void changeState(Console context, String inData) {
-        context.setCurrentState(context.getProjectState());
+        context.setCurrentState(new ProjectState());
     }
 
     protected void changeCollectedAmount(Project project, int amount) {

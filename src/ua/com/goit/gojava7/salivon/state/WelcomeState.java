@@ -44,6 +44,6 @@ public class WelcomeState extends State {
     @Override
     protected void changeState(Console context, String inData) {
         State.setIndexCategory(Integer.parseInt(inData));
-        context.setCurrentState(context.getCategoryState());
+        context.setCurrentState(new CategoryState());
     }
 }
