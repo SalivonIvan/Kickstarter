@@ -1,18 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ua.com.goit.gojava7.salivon.state;
 
 import java.util.Scanner;
 import ua.com.goit.gojava7.salivon.handlers.ErrorHandler;
 import ua.com.goit.gojava7.salivon.context.Console;
 
-/**
- *
- * @author Salivon Ivan
- */
 public abstract class State {
 
     protected static Scanner scan = new Scanner(System.in);
@@ -23,6 +14,10 @@ public abstract class State {
     private boolean commandExit = true;
     private boolean commandZero = true;
 
+    public abstract void outputContentState();
+
+    protected abstract void changeState(Console context, String inData);
+
     public boolean isCommandZero() {
         return commandZero;
     }
@@ -31,7 +26,7 @@ public abstract class State {
         this.commandZero = commandZero;
     }
 
-    public boolean getCommandExit() {
+    public boolean isCommandExit() {
         return commandExit;
     }
 
@@ -60,18 +55,7 @@ public abstract class State {
     }
 
     public void verification(Console context) {
-//        String inData = readUserInformations();
-//         if (inData.equalsIgnoreCase("q")) {
-//                performExit();
-//            }
-//        if (!handler.validate(inData)) {
-//            System.out.println("Enter the correct data!");
-//            System.out.println(menu);
-//            verification(context);
-//
-//        } else {
-//            changeState(context, inData);
-//        }
+
         while (true) {
             String inData = readUserInformations();
             if (inData.equalsIgnoreCase("q") && commandExit) {
@@ -102,9 +86,5 @@ public abstract class State {
         State.getScan().close();
         Runtime.getRuntime().exit(0);
     }
-
-    public abstract void outputContentState();
-
-    protected abstract void changeState(Console context, String inData);
 
 }

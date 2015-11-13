@@ -1,17 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ua.com.goit.gojava7.salivon.beans;
 
 import java.util.Calendar;
 import java.util.Date;
 
-/**
- *
- * @author salivon.i
- */
 public class Project {
 
     private int id;
@@ -39,24 +30,77 @@ public class Project {
         this.id = id;
     }
 
+    public Date getDateStart() {
+        return dateStart;
+    }
+
     private void setDateStart() {
         dateStart = new Date();
 
+    }
+
+    public int getIdCategory() {
+        return idCategory;
+    }
+
+    public void setIdCategory(int idCategory) {
+        this.idCategory = idCategory;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public int getTotal() {
+        return total;
+    }
+
+    public void setTotal(int total) {
+        this.total = total;
+    }
+
+    public int getNumberOfDaysToImplement() {
+        return numberOfDaysToImplement;
+    }
+
+    public void setNumberOfDaysToImplement(int numberOfDaysToImplement) {
+        this.numberOfDaysToImplement = numberOfDaysToImplement;
     }
 
     public String getHistoryProject() {
         return historyProject;
     }
 
-    public int getCollectedAmount() {
-        return collectedAmount;
-    }
-    public void setCollectedAmount(int collectedAmount) {
-        this.collectedAmount += collectedAmount;
+    public void setHistoryProject(String historyProject) {
+        this.historyProject = historyProject;
     }
 
     public String getLink() {
         return link;
+    }
+
+    public void setLink(String link) {
+        this.link = link;
+    }
+
+    public int getCollectedAmount() {
+        return collectedAmount;
+    }
+
+    public void setCollectedAmount(int collectedAmount) {
+        this.collectedAmount += collectedAmount;
     }
 
     public String getFaq() {
@@ -64,31 +108,7 @@ public class Project {
     }
 
     public void setFaq(String faq) {
-        this.faq = faq;
-    }
-
-
-    public int getTotal() {
-        return total;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public int getIdCategory() {
-        return idCategory;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public int getNumberOfDaysToEnd() {
-        long milSecondStart = dateStart.getTime();
-        long milSecondEnd = Calendar.getInstance().getTimeInMillis();
-        int numberOfDaysInWork = (int) (milSecondEnd - milSecondStart) / (1000 * 60 * 60 * 24);
-        return numberOfDaysInWork - numberOfDaysToImplement;
+        this.faq += faq + "\n";
     }
 
     private void setId(int id) {
@@ -97,6 +117,13 @@ public class Project {
 
     public int getId() {
         return id;
+    }
+
+    public int getNumberOfDaysToEnd() {
+        long milSecondStart = dateStart.getTime();
+        long milSecondEnd = Calendar.getInstance().getTimeInMillis();
+        int numberOfDaysInWork = (int) (milSecondEnd - milSecondStart) / (1000 * 60 * 60 * 24);
+        return numberOfDaysToImplement - numberOfDaysInWork;
     }
 
 }

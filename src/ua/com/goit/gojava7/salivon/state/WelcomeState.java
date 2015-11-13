@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ua.com.goit.gojava7.salivon.state;
 
 import java.util.List;
@@ -14,10 +9,6 @@ import ua.com.goit.gojava7.salivon.stores.StoreQuotes;
 import ua.com.goit.gojava7.salivon.stores.StoreCategories;
 import ua.com.goit.gojava7.salivon.context.Console;
 
-/**
- *
- * @author Salivon Ivan
- */
 public class WelcomeState extends State {
 
     private List<Category> categories = StoreCategories.getCategories();

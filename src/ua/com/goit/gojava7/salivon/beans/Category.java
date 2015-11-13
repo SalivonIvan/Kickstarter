@@ -1,14 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ua.com.goit.gojava7.salivon.beans;
 
-/**
- *
- * @author salivon.i
- */
 public class Category {
 
     private int id;
@@ -19,7 +10,11 @@ public class Category {
         this.id = id;
     }
 
-    private void setId(int id) {
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -27,8 +22,8 @@ public class Category {
         return name;
     }
 
-    public int getId() {
-        return id;
+    public void setName(String name) {
+        this.name = name;
     }
 
 }
