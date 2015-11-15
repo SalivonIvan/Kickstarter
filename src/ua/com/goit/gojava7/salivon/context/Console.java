@@ -12,11 +12,6 @@ import ua.com.goit.gojava7.salivon.stores.StoreProjects;
 public class Console {
 
     private State currentState = new WelcomeState();
-    private String inData;
-
-    public String getInData() {
-        return inData;
-    }
 
     public State getCurrentState() {
         return currentState;
