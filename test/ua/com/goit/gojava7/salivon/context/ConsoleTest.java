@@ -4,6 +4,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 import ua.com.goit.gojava7.salivon.state.QuestionState;
 import ua.com.goit.gojava7.salivon.state.State;
+import static org.mockito.Mockito.*;
 
 public class ConsoleTest {
 
@@ -38,8 +39,10 @@ public class ConsoleTest {
     @Test
     public void testOutputContentState() {
         System.out.println("outputContentState");
+        State state = mock(State.class);
+        instance.setCurrentState(state);
         instance.outputContentState();
-
+        verify(state).outputContentState();
     }
 
     /**
@@ -48,21 +51,26 @@ public class ConsoleTest {
     @Test
     public void testVerification() {
         System.out.println("verification");
-        Class c = instance.getCurrentState().getClass();
-        
-        State.getScan().next("q");
+        State state = mock(State.class);
+        instance.setCurrentState(state);
         instance.verification();
+        verify(state).verification(instance);
 
     }
 
     /**
      * Test of execute method, of class Console.
      */
-    @Test
+    @Test(expected = StackOverflowError.class)
     public void testExecute() {
         System.out.println("execute");
-        State.getScan().next("q");
-        instance.execute();
+        State state = mock(State.class);
+        Console inst = spy(instance);
+        inst.setCurrentState(state);
+        inst.execute();
+        verify(inst).outputContentState();
+        verify(inst).verification();
+        verify(inst).execute();
 
     }
 

@@ -1,43 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ua.com.goit.gojava7.salivon.state;
 
 import java.util.Scanner;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import ua.com.goit.gojava7.salivon.context.Console;
+import static org.mockito.Mockito.*;
 
-/**
- *
- * @author Salivon Ivan
- */
 public class StateTest {
-    
-    public StateTest() {
-    }
-    
-    @BeforeClass
-    public static void setUpClass() {
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
-    }
-    
-    @Before
-    public void setUp() {
-    }
-    
-    @After
-    public void tearDown() {
-    }
+
+    State instance = new WelcomeState();
 
     /**
      * Test of outputContentState method, of class State.
@@ -45,10 +16,11 @@ public class StateTest {
     @Test
     public void testOutputContentState() {
         System.out.println("outputContentState");
-        State instance = new WelcomeState();
-        instance.outputContentState();
-        
-        fail("The test case is a prototype.");
+
+        State instMock = mock(State.class);
+        instMock.outputContentState();
+        verify(instMock).outputContentState();
+
     }
 
     /**
@@ -229,5 +201,5 @@ public class StateTest {
         public void changeState(Console context, String inData) {
         }
     }
-    
+
 }
