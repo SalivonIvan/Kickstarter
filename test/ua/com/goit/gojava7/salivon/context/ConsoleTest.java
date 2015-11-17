@@ -54,24 +54,45 @@ public class ConsoleTest {
         State state = mock(State.class);
         instance.setCurrentState(state);
         instance.verification();
-        verify(state).verification(instance);
+        verify(state).verification();
+
+    }
+
+    /**
+     * Test of changeState method, of class Console.
+     */
+    @Test
+    public void testChangeState() {
+        System.out.println("changeState");
+        State state = mock(State.class);
+        instance.setCurrentState(state);
+        instance.changeState();
+        verify(state).changeState(instance);
+
+    }
+
+    /**
+     * Test of nextState method, of class Console.
+     */
+    @Test
+    public void testNextState() {
+        System.out.println("nextState");
+        State state = mock(State.class);
+        instance.setCurrentState(state);
+        instance.nextState();
+        verify(state).nextState(instance);
 
     }
 
     /**
      * Test of execute method, of class Console.
      */
-    @Test(expected = StackOverflowError.class)
+    @Test
     public void testExecute() {
         System.out.println("execute");
         State state = mock(State.class);
-        Console inst = spy(instance);
-        inst.setCurrentState(state);
-        inst.execute();
-        verify(inst).outputContentState();
-        verify(inst).verification();
-        verify(inst).execute();
-
+        instance.setCurrentState(state);
+        instance.execute();
     }
 
 }

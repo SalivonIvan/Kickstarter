@@ -13,7 +13,7 @@ public class ErrorHandlerStateProjectTest {
     @Test
     public void testValidate() {
         System.out.println("validate");
-        assertEquals(false, instance.validate(""));
+        assertEquals(false, instance.validate("q"));
         assertEquals(true, instance.validate("1"));
         assertEquals(true, instance.validate("2"));
         assertEquals(true, instance.validate("0"));

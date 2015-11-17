@@ -18,6 +18,8 @@ public class ErrorHandlerStatePaymentOptionTest {
         assertEquals(true, instance.validate("3"));
         assertEquals(true, instance.validate("4"));
         assertEquals(false, instance.validate(""));
+        assertEquals(false, instance.validate("0"));
+        assertEquals(false, instance.validate("5"));
     }
 
 }

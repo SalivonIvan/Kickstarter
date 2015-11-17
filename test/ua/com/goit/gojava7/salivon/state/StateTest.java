@@ -1,3 +1,4 @@
+
 package ua.com.goit.gojava7.salivon.state;
 
 import java.util.Scanner;
@@ -5,10 +6,9 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 import ua.com.goit.gojava7.salivon.context.Console;
 import static org.mockito.Mockito.*;
+import ua.com.goit.gojava7.salivon.handlers.ErrorHandler;
 
 public class StateTest {
-
-    State instance = new WelcomeState();
 
     /**
      * Test of outputContentState method, of class State.
@@ -16,11 +16,9 @@ public class StateTest {
     @Test
     public void testOutputContentState() {
         System.out.println("outputContentState");
-
-        State instMock = mock(State.class);
-        instMock.outputContentState();
-        verify(instMock).outputContentState();
-
+        State instance = new StateImpl();
+        instance.outputContentState();
+        
     }
 
     /**
@@ -29,12 +27,26 @@ public class StateTest {
     @Test
     public void testChangeState() {
         System.out.println("changeState");
-        Console context = null;
-        String inData = "";
+        Console context = new Console();
         State instance = new StateImpl();
-        instance.changeState(context, inData);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        instance.changeState(context);
+
+    }
+
+    /**
+     * Test of getInData method, of class State.
+     */
+    @Test
+    public void testGetInData() {
+        System.out.println("getInData");
+        State instance = new StateImpl();
+        State inst = spy(instance);
+        when(inst.readUserInformations()).thenReturn("q");
+        inst.verification();
+        String expResult = "q";
+        String result = instance.getInData();
+        assertEquals(expResult, result);
+       
     }
 
     /**
@@ -44,11 +56,10 @@ public class StateTest {
     public void testIsCommandZero() {
         System.out.println("isCommandZero");
         State instance = new StateImpl();
-        boolean expResult = false;
+        boolean expResult = true;
         boolean result = instance.isCommandZero();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
     }
 
     /**
@@ -60,8 +71,8 @@ public class StateTest {
         boolean commandZero = false;
         State instance = new StateImpl();
         instance.setCommandZero(commandZero);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(false, instance.isCommandZero());
+       
     }
 
     /**
@@ -71,11 +82,10 @@ public class StateTest {
     public void testIsCommandExit() {
         System.out.println("isCommandExit");
         State instance = new StateImpl();
-        boolean expResult = false;
+        boolean expResult = true;
         boolean result = instance.isCommandExit();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
     }
 
     /**
@@ -87,8 +97,8 @@ public class StateTest {
         boolean commandExit = false;
         State instance = new StateImpl();
         instance.setCommandExit(commandExit);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(false, instance.isCommandExit());
+     
     }
 
     /**
@@ -99,9 +109,8 @@ public class StateTest {
         System.out.println("getScan");
         Scanner expResult = null;
         Scanner result = State.getScan();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertNotNull(result);
+     
     }
 
     /**
@@ -110,11 +119,11 @@ public class StateTest {
     @Test
     public void testGetIndexCategory() {
         System.out.println("getIndexCategory");
-        int expResult = 0;
+        int expResult = 2;
+        State.setIndexCategory(expResult);
         int result = State.getIndexCategory();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
     }
 
     /**
@@ -123,10 +132,11 @@ public class StateTest {
     @Test
     public void testSetIndexCategory() {
         System.out.println("setIndexCategory");
-        int indexCategory = 0;
+        int indexCategory = 10;
         State.setIndexCategory(indexCategory);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(10, State.getIndexCategory());
+               
+       
     }
 
     /**
@@ -135,11 +145,11 @@ public class StateTest {
     @Test
     public void testGetIndexProject() {
         System.out.println("getIndexProject");
-        int expResult = 0;
+        int expResult = 5;
+        State.setIndexProject(expResult);
         int result = State.getIndexProject();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+      
     }
 
     /**
@@ -150,8 +160,7 @@ public class StateTest {
         System.out.println("setIndexProject");
         int indexProject = 0;
         State.setIndexProject(indexProject);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(0, State.getIndexProject());
     }
 
     /**
@@ -160,11 +169,25 @@ public class StateTest {
     @Test
     public void testVerification() {
         System.out.println("verification");
-        Console context = null;
         State instance = new StateImpl();
-        instance.verification(context);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        ErrorHandler mock = mock(ErrorHandler.class);
+        State spy = spy(instance);
+        spy.handler = mock;
+        spy.setCommandExit(true);
+        when(mock.validate(anyString())).thenReturn(true);
+        doReturn("q").when(spy).readUserInformations();
+        spy.verification();
+        doReturn("0").when(spy).readUserInformations();
+        spy.verification();
+        doReturn("1").when(spy).readUserInformations();
+        spy.verification();
+//         doReturn("q").when(spy).readUserInformations();
+//         spy.setCommandExit(false);
+//        spy.verification();
+//        doReturn("0").when(spy).readUserInformations();
+//        spy.setCommandZero(false);
+//        spy.verification();
+        
     }
 
     /**
@@ -176,9 +199,8 @@ public class StateTest {
         State instance = new StateImpl();
         String expResult = "";
         String result = instance.readUserInformations();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertNotNull(result);
+        
     }
 
     /**
@@ -188,9 +210,21 @@ public class StateTest {
     public void testPerformExit() {
         System.out.println("performExit");
         State instance = new StateImpl();
-        instance.performExit();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+//        instance.performExit();
+        
+    }
+
+    /**
+     * Test of nextState method, of class State.
+     */
+    @Test
+    public void testNextState() {
+        System.out.println("nextState");
+        Console context = mock(Console.class);
+        State instance = new StateImpl();
+        instance.nextState(context);
+        verify(context).execute();
+        
     }
 
     public class StateImpl extends State {
@@ -198,7 +232,7 @@ public class StateTest {
         public void outputContentState() {
         }
 
-        public void changeState(Console context, String inData) {
+        public void changeState(Console context) {
         }
     }
 
