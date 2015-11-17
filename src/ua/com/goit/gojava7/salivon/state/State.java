@@ -13,10 +13,15 @@ public abstract class State {
     private static int indexProject;
     private boolean commandExit = true;
     private boolean commandZero = true;
+    private static String inData;
 
     public abstract void outputContentState();
 
-    protected abstract void changeState(Console context, String inData);
+    public abstract void changeState(Console context);
+
+    protected String getInData() {
+        return inData;
+    }
 
     public boolean isCommandZero() {
         return commandZero;
@@ -54,30 +59,27 @@ public abstract class State {
         State.indexProject = indexProject;
     }
 
-    public void verification(Console context) {
+    public void verification() {
 
         while (true) {
-            String inData = readUserInformations();
+            inData = readUserInformations();
             if (inData.equalsIgnoreCase("q") && commandExit) {
-                performExit();
+                return;
             }
             if (inData.equals("0") && commandZero) {
-                changeState(context, inData);
                 return;
             }
             if (!handler.validate(inData)) {
                 System.out.println("Enter the correct data!");
                 System.out.println(menu);
                 continue;
-            } else {
-                changeState(context, inData);
-                return;
             }
+            return;
         }
     }
 
     public String readUserInformations() {
-        String inData = State.scan.next();
+        String inData = State.scan.nextLine();
         return inData;
     }
 
@@ -85,6 +87,10 @@ public abstract class State {
         System.out.println("Goodbye my LORD!");
         State.getScan().close();
         Runtime.getRuntime().exit(0);
+    }
+
+    public void nextState(Console context) {
+        context.execute();
     }
 
 }

@@ -43,7 +43,12 @@ public class CategoryState extends State {
     }
 
     @Override
-    protected void changeState(Console context, String inData) {
+    public void changeState(Console context) {
+        String inData = getInData();
+         if (inData.equalsIgnoreCase("q")) {
+            performExit();
+            return;
+        }
         int inDateToInt = Integer.parseInt(inData);
         if (inDateToInt == 0) {
             context.setCurrentState(new WelcomeState());

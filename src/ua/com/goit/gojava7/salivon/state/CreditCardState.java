@@ -18,7 +18,7 @@ class CreditCardState extends PaymentState {
     }
 
     @Override
-    protected void changeState(Console context, String inData) {
+    public void changeState(Console context) {
         context.setCurrentState(new PaymentOptionState());
     }
 

@@ -20,7 +20,8 @@ public class PaymentOptionState extends PaymentState {
     }
 
     @Override
-    protected void changeState(Console context, String inData) {
+    public void changeState(Console context) {
+        String inData = getInData();
         int inDateToInt = Integer.parseInt(inData);
         int index = State.getIndexProject() - 1;
         Project project = projects.get(index);

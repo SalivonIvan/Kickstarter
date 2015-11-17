@@ -34,8 +34,13 @@ public class WelcomeState extends State {
     }
 
     @Override
-    protected void changeState(Console context, String inData) {
-        State.setIndexCategory(Integer.parseInt(inData));
+    public void changeState(Console context) {
+        String inData = getInData();
+        if (inData.equalsIgnoreCase("q")) {
+            performExit();
+            return;
+        }
+        State.setIndexCategory(Integer.parseInt(getInData()));
         context.setCurrentState(new CategoryState());
     }
 }

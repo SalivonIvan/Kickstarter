@@ -23,7 +23,8 @@ public class QuestionState extends State {
     }
 
     @Override
-    protected void changeState(Console context, String inData) {
+    public void changeState(Console context) {
+        String inData = getInData();
         int index = State.getIndexProject() - 1;
         Project project = projects.get(index);
         project.setFaq(inData);

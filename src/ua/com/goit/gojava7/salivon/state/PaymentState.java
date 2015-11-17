@@ -12,8 +12,6 @@ public abstract class PaymentState extends State {
     public PaymentState() {
         setCommandExit(false);
         setCommandZero(false);
-        menu = "Enter 0 - return to above.\n"
-                + "Enter 'q' - to exit.\n";
 
     }
 

@@ -26,13 +26,22 @@ public class Console {
     }
 
     void verification() {
-        currentState.verification(this);
+        currentState.verification();
+    }
+
+    void changeState() {
+        currentState.changeState(this);
+    }
+
+    void nextState() {
+        currentState.nextState(this);
     }
 
     public void execute() {
         outputContentState();
         verification();
-        execute();
+        changeState();
+        nextState();
     }
 
 }
