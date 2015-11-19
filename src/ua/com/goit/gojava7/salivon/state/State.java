@@ -9,7 +9,7 @@ import ua.com.goit.gojava7.salivon.context.Console;
 
 public abstract class State {
 
-    private ManagerData managerData = new ManagerFileData();
+    private ManagerData managerData = new ObjectDataManager();
     protected static Scanner scan = new Scanner(System.in);
     protected String menu;
     protected ErrorHandler handler;

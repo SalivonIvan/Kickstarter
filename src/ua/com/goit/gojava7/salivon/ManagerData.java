@@ -7,6 +7,7 @@ package ua.com.goit.gojava7.salivon;
 
 import java.util.List;
 import ua.com.goit.gojava7.salivon.beans.Category;
+import ua.com.goit.gojava7.salivon.beans.Faq;
 import ua.com.goit.gojava7.salivon.beans.Project;
 
 /**
@@ -24,4 +25,8 @@ public interface ManagerData {
     List<Project> getProjectsOfCategory(int idCategory);
 
     Project getProject(int idProject);
+
+    void saveFaq(Faq faq);
+
+    String getFaq(int idProject);
 }

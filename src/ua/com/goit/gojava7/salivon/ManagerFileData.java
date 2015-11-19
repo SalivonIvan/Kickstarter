@@ -1,8 +1,10 @@
 package ua.com.goit.gojava7.salivon;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,6 +12,7 @@ import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import ua.com.goit.gojava7.salivon.beans.Category;
+import ua.com.goit.gojava7.salivon.beans.Faq;
 import ua.com.goit.gojava7.salivon.beans.Project;
 
 public class ManagerFileData implements ManagerData {
@@ -17,6 +20,7 @@ public class ManagerFileData implements ManagerData {
     private static final String PATH_TO_QUOTE = "quote.csv";
     private static final String PATH_TO_CATEGORY = "category.csv";
     private static final String PATH_TO_PROJECT = "project.csv";
+    private static final String PATH_TO_FAQ = "faq.csv";
 
     @Override
     public String getRandomQuote() {
@@ -110,10 +114,10 @@ public class ManagerFileData implements ManagerData {
                 String title = arr[1].trim();
                 int total = Integer.parseInt(arr[2].trim());
                 int idCategoryOfProject = Integer.parseInt(arr[3].trim());
-                if (idCategoryOfProject==idCategory) {
+                if (idCategoryOfProject == idCategory) {
                     projects.add(new Project(title, total, idCategoryOfProject, id));
                 }
-                
+
             }
 
         } catch (IOException ex) {
@@ -137,6 +141,7 @@ public class ManagerFileData implements ManagerData {
                 int idCategory = Integer.parseInt(arr[3].trim());
                 if (id == idProject) {
                     requestedProject = new Project(title, total, idCategory, id);
+                    requestedProject.setFaq(getFaq(idProject));
                     break;
                 }
 
@@ -146,5 +151,42 @@ public class ManagerFileData implements ManagerData {
             Logger.getLogger(ManagerFileData.class.getName()).log(Level.SEVERE, null, ex);
         }
         return requestedProject;
+    }
+
+    @Override
+    public void saveFaq(Faq faq) {
+        File file = new File(PATH_TO_FAQ);
+        int idProject = faq.getIdProject();
+        String context = faq.getContext();
+        try (BufferedWriter br = new BufferedWriter(new FileWriter(file, true))) {
+
+            br.write(idProject + "|" + context + "\n");
+        } catch (IOException ex) {
+            Logger.getLogger(ManagerFileData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @Override
+    public String getFaq(int idProject) {
+        String faq = "";
+        File file = new File(PATH_TO_FAQ);
+        String line = null;
+        try (BufferedReader br = new BufferedReader(new FileReader(file))) {
+
+            while ((line = br.readLine()) != null) {
+                String[] arr = line.split("[|]");
+                int id = Integer.parseInt(arr[0].trim());
+                String context = arr[1].trim();
+                if (id == idProject) {
+                    faq += context+"\n";
+                    
+                }
+
+            }
+
+        } catch (IOException ex) {
+            Logger.getLogger(ManagerFileData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return faq;
     }
 }

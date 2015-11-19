@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import ua.com.goit.gojava7.salivon.beans.Category;
+import ua.com.goit.gojava7.salivon.beans.Faq;
 import ua.com.goit.gojava7.salivon.beans.Project;
 import ua.com.goit.gojava7.salivon.beans.Quote;
 import ua.com.goit.gojava7.salivon.stores.StoreCategories;
@@ -68,5 +69,23 @@ public class ObjectDataManager implements ManagerData {
             }
         }
         return requestedProject;
+    }
+
+    @Override
+    public void saveFaq(Faq faq) {
+        int id = faq.getIdProject();
+        String context = faq.getContext();
+        List<Project> projects = StoreProjects.getProjects();
+        for (Project project : projects) {
+            if (id == project.getId()) {
+                project.setFaq(context);
+                break;
+            }
+        }
+    }
+
+    @Override
+    public String getFaq(int idProject) {
+       return null;
     }
 }

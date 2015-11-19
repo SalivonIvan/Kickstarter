@@ -1,6 +1,7 @@
 package ua.com.goit.gojava7.salivon.state;
 
 import java.util.List;
+import ua.com.goit.gojava7.salivon.beans.Faq;
 import ua.com.goit.gojava7.salivon.beans.Project;
 import ua.com.goit.gojava7.salivon.context.Console;
 import ua.com.goit.gojava7.salivon.handlers.ErrorHandlerStateQuestion;
@@ -25,7 +26,7 @@ public class QuestionState extends State {
     @Override
     public void changeState(Console context) {
         String inData = getInData();
-        project.setFaq(inData);
+        getManagerData().saveFaq(new Faq(State.getIndexProject(), inData));
         context.setCurrentState(new ProjectState());
     }
 
