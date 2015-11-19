@@ -8,7 +8,7 @@ import ua.com.goit.gojava7.salivon.stores.StoreProjects;
 
 public class QuestionState extends State {
 
-    private List<Project> projects = StoreProjects.getProjects();
+    private Project project = getManagerData().getProject(State.getIndexProject());
 
     public QuestionState() {
         handler = new ErrorHandlerStateQuestion();
@@ -25,8 +25,6 @@ public class QuestionState extends State {
     @Override
     public void changeState(Console context) {
         String inData = getInData();
-        int index = State.getIndexProject() - 1;
-        Project project = projects.get(index);
         project.setFaq(inData);
         context.setCurrentState(new ProjectState());
     }

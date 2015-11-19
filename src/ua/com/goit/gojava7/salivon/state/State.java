@@ -1,11 +1,15 @@
 package ua.com.goit.gojava7.salivon.state;
 
 import java.util.Scanner;
+import ua.com.goit.gojava7.salivon.ManagerData;
+import ua.com.goit.gojava7.salivon.ManagerFileData;
+import ua.com.goit.gojava7.salivon.ObjectDataManager;
 import ua.com.goit.gojava7.salivon.handlers.ErrorHandler;
 import ua.com.goit.gojava7.salivon.context.Console;
 
 public abstract class State {
 
+    private ManagerData managerData = new ManagerFileData();
     protected static Scanner scan = new Scanner(System.in);
     protected String menu;
     protected ErrorHandler handler;
@@ -18,6 +22,14 @@ public abstract class State {
     public abstract void outputContentState();
 
     public abstract void changeState(Console context);
+
+    public ManagerData getManagerData() {
+        return managerData;
+    }
+
+    public void setManagerData(ManagerData manager) {
+        this.managerData = manager;
+    }
 
     protected String getInData() {
         return inData;
@@ -62,7 +74,7 @@ public abstract class State {
     public void verification() {
 
         while (true) {
-            inData = readUserInformations();
+            inData = readUserInformations().trim();
             if (inData.equalsIgnoreCase("q") && commandExit) {
                 return;
             }

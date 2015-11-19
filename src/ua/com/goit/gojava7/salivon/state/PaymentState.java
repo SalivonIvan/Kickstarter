@@ -7,7 +7,7 @@ import ua.com.goit.gojava7.salivon.context.Console;
 
 public abstract class PaymentState extends State {
 
-    protected List<Project> projects = StoreProjects.getProjects();
+    protected Project project = getManagerData().getProject(State.getIndexProject());
 
     public PaymentState() {
         setCommandExit(false);

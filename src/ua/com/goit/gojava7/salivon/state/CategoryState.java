@@ -10,11 +10,11 @@ import ua.com.goit.gojava7.salivon.context.Console;
 
 public class CategoryState extends State {
 
-    private List<Category> categories = StoreCategories.getCategories();
-    private List<Project> projects = StoreProjects.getProjects();
+    private List<Category> categories = getManagerData().getAllCategories();
+    private List<Project> projects = getManagerData().getProjectsOfCategory(State.getIndexCategory());
 
     public CategoryState() {
-        handler = new ErrorHandlerStateCategory();
+        handler = new ErrorHandlerStateCategory(getManagerData());
         menu = "Enter the number of projects to select it.\n"
                 + "Enter 0 return to above.\n"
                 + "Enter 'q' to exit.\n";

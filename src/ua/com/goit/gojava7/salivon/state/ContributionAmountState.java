@@ -20,8 +20,6 @@ class ContributionAmountState extends PaymentState {
     public void changeState(Console context) {
         String inData = getInData();
         int amount = Integer.parseInt(inData);
-        int index = State.getIndexProject() - 1;
-        Project project = projects.get(index);
         project.setCollectedAmount(amount);
         context.setCurrentState(new ProjectState());
     }

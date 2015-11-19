@@ -8,7 +8,7 @@ import ua.com.goit.gojava7.salivon.context.Console;
 
 public class ProjectState extends State {
 
-    private List<Project> projects = StoreProjects.getProjects();
+    private Project project = getManagerData().getProject(State.getIndexProject());
 
     public ProjectState() {
         handler = new ErrorHandlerStateProject();
@@ -21,9 +21,7 @@ public class ProjectState extends State {
 
     @Override
     public void outputContentState() {
-        int index = State.getIndexProject() - 1;
         System.out.println("Project");
-        Project project = projects.get(index);
         System.out.println(project.getTitle());
         System.out.println("  Description: " + project.getDescription());
         System.out.println("  Total " + project.getTotal() + "$");

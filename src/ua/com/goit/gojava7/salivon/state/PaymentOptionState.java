@@ -23,8 +23,6 @@ public class PaymentOptionState extends PaymentState {
     public void changeState(Console context) {
         String inData = getInData();
         int inDateToInt = Integer.parseInt(inData);
-        int index = State.getIndexProject() - 1;
-        Project project = projects.get(index);
         if (inDateToInt == 1) {
             project.setCollectedAmount(1);
             context.setCurrentState(new ProjectState());
