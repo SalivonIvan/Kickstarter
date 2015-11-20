@@ -20,6 +20,7 @@ public class QuestionState extends State {
 
     @Override
     public void outputContentState() {
+        System.out.println("--------------------------------------------------");
         System.out.println(menu);
     }
 

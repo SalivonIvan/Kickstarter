@@ -33,7 +33,7 @@ public class CategoryState extends State {
                 System.out.println(list1.getId() + " - " + list1.getTitle());
                 System.out.println("  Description: " + list1.getDescription());
                 System.out.println("  Total " + list1.getTotal() + "$");
-                System.out.println("  Collected amount " + list1.getCollectedAmount() + "%");
+                System.out.println("  Collected amount " + list1.getCollectedAmount() + "$");
                 System.out.println("  Number of days to end " + list1.getNumberOfDaysToEnd() + "\n");
             }
         }
@@ -49,11 +49,11 @@ public class CategoryState extends State {
             performExit();
             return;
         }
-        int inDateToInt = Integer.parseInt(inData);
-        if (inDateToInt == 0) {
+        int inDataToInt = Integer.parseInt(inData);
+        if (inDataToInt == 0) {
             context.setCurrentState(new WelcomeState());
         } else {
-            State.setIndexProject(inDateToInt);
+            State.setIndexProject(inDataToInt);
             context.setCurrentState(new ProjectState());
         }
 

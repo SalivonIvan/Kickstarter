@@ -3,6 +3,7 @@ package ua.com.goit.gojava7.salivon.context;
 import java.util.Scanner;
 import ua.com.goit.gojava7.salivon.state.CategoryState;
 import ua.com.goit.gojava7.salivon.state.PaymentState;
+import ua.com.goit.gojava7.salivon.state.PreloadingState;
 import ua.com.goit.gojava7.salivon.state.ProjectState;
 import ua.com.goit.gojava7.salivon.state.State;
 import ua.com.goit.gojava7.salivon.state.WelcomeState;
@@ -11,7 +12,7 @@ import ua.com.goit.gojava7.salivon.stores.StoreProjects;
 
 public class Console {
 
-    private State currentState = new WelcomeState();
+    private State currentState = new PreloadingState();
 
     public State getCurrentState() {
         return currentState;

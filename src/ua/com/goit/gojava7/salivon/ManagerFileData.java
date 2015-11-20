@@ -13,14 +13,16 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import ua.com.goit.gojava7.salivon.beans.Category;
 import ua.com.goit.gojava7.salivon.beans.Faq;
+import ua.com.goit.gojava7.salivon.beans.Payment;
 import ua.com.goit.gojava7.salivon.beans.Project;
 
 public class ManagerFileData implements ManagerData {
 
-    private static final String PATH_TO_QUOTE = "quote.csv";
-    private static final String PATH_TO_CATEGORY = "category.csv";
-    private static final String PATH_TO_PROJECT = "project.csv";
-    private static final String PATH_TO_FAQ = "faq.csv";
+    private static final String PATH_TO_QUOTE = "resource/quote.csv";
+    private static final String PATH_TO_CATEGORY = "resource/category.csv";
+    private static final String PATH_TO_PROJECT = "resource/project.csv";
+    private static final String PATH_TO_FAQ = "resource/faq.csv";
+    private static final String PATH_TO_PAYMENT = "resource/payment.csv";
 
     @Override
     public String getRandomQuote() {
@@ -115,7 +117,10 @@ public class ManagerFileData implements ManagerData {
                 int total = Integer.parseInt(arr[2].trim());
                 int idCategoryOfProject = Integer.parseInt(arr[3].trim());
                 if (idCategoryOfProject == idCategory) {
-                    projects.add(new Project(title, total, idCategoryOfProject, id));
+                    Project p = new Project(title, total, idCategoryOfProject, id);
+                    p.setFaq(getFaq(id));
+                    p.setCollectedAmount(getTotal(id));
+                    projects.add(p);
                 }
 
             }
@@ -142,6 +147,7 @@ public class ManagerFileData implements ManagerData {
                 if (id == idProject) {
                     requestedProject = new Project(title, total, idCategory, id);
                     requestedProject.setFaq(getFaq(idProject));
+                    requestedProject.setCollectedAmount(getTotal(idProject));
                     break;
                 }
 
@@ -178,8 +184,8 @@ public class ManagerFileData implements ManagerData {
                 int id = Integer.parseInt(arr[0].trim());
                 String context = arr[1].trim();
                 if (id == idProject) {
-                    faq += context+"\n";
-                    
+                    faq += context + "\n";
+
                 }
 
             }
@@ -188,5 +194,44 @@ public class ManagerFileData implements ManagerData {
             Logger.getLogger(ManagerFileData.class.getName()).log(Level.SEVERE, null, ex);
         }
         return faq;
+    }
+
+    @Override
+    public void savePayment(Payment payment) {
+        File file = new File(PATH_TO_PAYMENT);
+        int idProject = payment.getIdProject();
+        String namePayer = payment.getNamePayer();
+        long numberCard = payment.getNumberCard();
+        int total = payment.getTotal();
+        try (BufferedWriter br = new BufferedWriter(new FileWriter(file, true))) {
+
+            br.write(idProject + "|" + namePayer + "|" + numberCard + "|" + total + "\n");
+        } catch (IOException ex) {
+            Logger.getLogger(ManagerFileData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @Override
+    public int getTotal(int idProject) {
+        int total = 0;
+        File file = new File(PATH_TO_PAYMENT);
+        String line = null;
+        try (BufferedReader br = new BufferedReader(new FileReader(file))) {
+
+            while ((line = br.readLine()) != null) {
+                String[] arr = line.split("[|]");
+                int id = Integer.parseInt(arr[0].trim());
+                int sum = Integer.parseInt(arr[3].trim());
+                if (id == idProject) {
+                    total += sum;
+
+                }
+
+            }
+
+        } catch (IOException ex) {
+            Logger.getLogger(ManagerFileData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return total;
     }
 }

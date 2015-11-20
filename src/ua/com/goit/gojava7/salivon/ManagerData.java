@@ -8,6 +8,7 @@ package ua.com.goit.gojava7.salivon;
 import java.util.List;
 import ua.com.goit.gojava7.salivon.beans.Category;
 import ua.com.goit.gojava7.salivon.beans.Faq;
+import ua.com.goit.gojava7.salivon.beans.Payment;
 import ua.com.goit.gojava7.salivon.beans.Project;
 
 /**
@@ -16,17 +17,21 @@ import ua.com.goit.gojava7.salivon.beans.Project;
  */
 public interface ManagerData {
 
-    String getRandomQuote();
+    public String getRandomQuote();
 
-    List<Category> getAllCategories();
+    public List<Category> getAllCategories();
 
-    Category getCategory(int idCategory);
+    public Category getCategory(int idCategory);
 
-    List<Project> getProjectsOfCategory(int idCategory);
+    public List<Project> getProjectsOfCategory(int idCategory);
 
-    Project getProject(int idProject);
+    public Project getProject(int idProject);
 
-    void saveFaq(Faq faq);
+    public void saveFaq(Faq faq);
 
-    String getFaq(int idProject);
+    public String getFaq(int idProject);
+
+    public void savePayment(Payment payment);
+
+    public int getTotal(int idProject);
 }

@@ -9,7 +9,9 @@ import ua.com.goit.gojava7.salivon.context.Console;
 
 public abstract class State {
 
-    private ManagerData managerData = new ObjectDataManager();
+    protected static final int FILE_DATA = 1;
+    protected static final int OBJECT_DATA = 2;
+    private ManagerData managerData;
     protected static Scanner scan = new Scanner(System.in);
     protected String menu;
     protected ErrorHandler handler;
@@ -18,17 +20,36 @@ public abstract class State {
     private boolean commandExit = true;
     private boolean commandZero = true;
     private static String inData;
+    private static int currentData;
+
+    public State() {
+        setManagerData();
+    }
 
     public abstract void outputContentState();
 
     public abstract void changeState(Console context);
 
+    public static int getCurrentData() {
+        return currentData;
+    }
+
+    public static void setCurrentData(int command) {
+        State.currentData = command;
+    }
+
     public ManagerData getManagerData() {
         return managerData;
     }
 
-    public void setManagerData(ManagerData manager) {
-        this.managerData = manager;
+    public void setManagerData() {
+        if (currentData == FILE_DATA) {
+            managerData = new ManagerFileData();
+        }
+        if (currentData == OBJECT_DATA) {
+            managerData = new ObjectDataManager();
+        }
+
     }
 
     protected String getInData() {

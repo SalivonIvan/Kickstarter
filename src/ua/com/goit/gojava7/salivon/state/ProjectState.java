@@ -30,7 +30,7 @@ public class ProjectState extends State {
         System.out.println("  History " + project.getHistoryProject());
         System.out.println("  Link " + project.getLink());
         System.out.println("  FAQ " + project.getFaq() + "\n");
-        System.out.println("--------------------------------------------------\n");
+        System.out.println("--------------------------------------------------");
         System.out.println(menu);
     }
 
