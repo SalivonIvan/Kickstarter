@@ -7,12 +7,8 @@ import ua.com.goit.gojava7.salivon.beans.Project;
 
 public class StoreProjectsTest {
 
-    /**
-     * Test of getProjects method, of class StoreProjects.
-     */
     @Test
     public void testGetProjects() {
-        System.out.println("getProjects");
         List<Project> result = StoreProjects.getProjects();
         assertTrue(result instanceof List);
     }

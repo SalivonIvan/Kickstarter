@@ -1,11 +1,9 @@
 package ua.com.goit.gojava7.salivon.state;
 
-import java.util.List;
 import ua.com.goit.gojava7.salivon.beans.Faq;
 import ua.com.goit.gojava7.salivon.beans.Project;
 import ua.com.goit.gojava7.salivon.context.Console;
 import ua.com.goit.gojava7.salivon.handlers.ErrorHandlerStateQuestion;
-import ua.com.goit.gojava7.salivon.stores.StoreProjects;
 
 public class QuestionState extends State {
 

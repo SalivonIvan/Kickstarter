@@ -2,21 +2,22 @@ package ua.com.goit.gojava7.salivon.handlers;
 
 import org.junit.Test;
 import static org.junit.Assert.*;
+import ua.com.goit.gojava7.salivon.ManagerFileData;
+import ua.com.goit.gojava7.salivon.state.State;
 
 public class ErrorHandlerStateCategoryTest {
 
-    ErrorHandlerStateCategory instance = new ErrorHandlerStateCategory();
 
-    /**
-     * Test of validate method, of class ErrorHandlerStateCategory.
-     */
     @Test
     public void testValidate() {
-        System.out.println("validate");
+        State.setIndexProject(1);
+        State.setIndexCategory(1);
+        ErrorHandlerStateCategory instance = new ErrorHandlerStateCategory(new ManagerFileData());
         assertEquals(false, instance.validate(""));
-        assertEquals(true, instance.validate("0"));
-        assertEquals(false, instance.validate("10"));
-        assertEquals(false, instance.validate("2"));
+        assertEquals(false, instance.validate("0"));
+        assertEquals(true, instance.validate("1"));
+
     }
+    
 
 }

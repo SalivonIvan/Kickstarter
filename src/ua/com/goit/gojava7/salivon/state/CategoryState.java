@@ -2,8 +2,6 @@ package ua.com.goit.gojava7.salivon.state;
 
 import ua.com.goit.gojava7.salivon.beans.Category;
 import ua.com.goit.gojava7.salivon.beans.Project;
-import ua.com.goit.gojava7.salivon.stores.StoreProjects;
-import ua.com.goit.gojava7.salivon.stores.StoreCategories;
 import java.util.List;
 import ua.com.goit.gojava7.salivon.handlers.ErrorHandlerStateCategory;
 import ua.com.goit.gojava7.salivon.context.Console;
