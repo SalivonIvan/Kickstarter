@@ -20,7 +20,7 @@ public class QuestionStateTest {
         Console context = new Console();
         QuestionState instance = new QuestionState();
         QuestionState spy = spy(instance);
-        State.setIndexProject(5);
+        State.setIdProject(5);
         when(spy.getInData()).thenReturn("Hello????");
         spy.changeState(context);
     }

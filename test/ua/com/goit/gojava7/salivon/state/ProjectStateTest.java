@@ -10,8 +10,8 @@ public class ProjectStateTest {
     @Test
     public void testOutputContentState() {
         State.setCurrentData(State.FILE_DATA);
-        State.setIndexCategory(1);
-        State.setIndexProject(3);
+        State.setIdCategory(1);
+        State.setIdProject(3);
         ProjectState instance = new ProjectState();
         instance.outputContentState();
     }

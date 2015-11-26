@@ -10,8 +10,8 @@ public class ErrorHandlerStateCategoryTest {
 
     @Test
     public void testValidate() {
-        State.setIndexProject(1);
-        State.setIndexCategory(1);
+        State.setIdProject(1);
+        State.setIdCategory(1);
         ErrorHandlerStateCategory instance = new ErrorHandlerStateCategory(new ManagerFileData());
         assertEquals(false, instance.validate(""));
         assertEquals(false, instance.validate("0"));

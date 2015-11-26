@@ -10,23 +10,18 @@ public class ErrorHandlerStateCategory implements ErrorHandler {
     private List<Project> projects;
 
     public ErrorHandlerStateCategory() {
-        this.projects = DaoFactory.getProjectDao(State.getCurrentDataType()).getProjectsOfCategory(State.getIndexCategory());
+        this.projects = DaoFactory.getProjectDao(State.getCurrentDataType()).getProjectsOfCategory(State.getIdCategory());
     }
 
     @Override
     public boolean validate(String inData) {
         try {
             int n = Integer.parseInt(inData);
-            for (Project project : projects) {
-                if (project.getId() == n) {
-                    return true;
-                }
-            }
-
+            return n - 1 >= 0 && n - 1 < projects.size();
         } catch (NumberFormatException e) {
             return false;
         }
-        return false;
+
     }
 
 }

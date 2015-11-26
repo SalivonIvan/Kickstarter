@@ -10,8 +10,8 @@ import ua.com.goit.gojava7.salivon.dao.DaoFactory;
 
 public class CategoryState extends State {
 
-    private List<Category> categories = DaoFactory.getCategoryDao(getCurrentDataType()).getAllCategories();
-    private List<Project> projects = DaoFactory.getProjectDao(getCurrentDataType()).getProjectsOfCategory(State.getIndexCategory());
+    private Category category = DaoFactory.getCategoryDao(getCurrentDataType()).getCategory(State.getIdCategory());
+    private List<Project> projects = DaoFactory.getProjectDao(getCurrentDataType()).getProjectsOfCategory(State.getIdCategory());
 
     public CategoryState() {
         handler = new ErrorHandlerStateCategory();
@@ -23,19 +23,17 @@ public class CategoryState extends State {
 
     @Override
     public void outputContentState() {
-        int index = State.getIndexCategory();
         System.out.print("Category - ");
-        Category cat = categories.get(index - 1);
-        System.out.println(cat.getId() + " " + cat.getName() + "\n");
+        System.out.println("  " + category.getName() + "\n");
         System.out.println("Projects:");
+        int i = 1;
         for (Project list1 : projects) {
-            if (list1.getIdCategory() == index) {
-                System.out.println(list1.getId() + " - " + list1.getTitle());
-                System.out.println("  Description: " + list1.getDescription());
-                System.out.println("  Total " + list1.getTotal() + "$");
-                System.out.println("  Collected amount " + list1.getCollectedAmount() + "$");
-                System.out.println("  Number of days to end " + list1.getNumberOfDaysToEnd() + "\n");
-            }
+            System.out.println(i + " - " + list1.getTitle());
+            System.out.println("  Description: " + list1.getDescription());
+            System.out.println("  Total " + list1.getTotal() + "$");
+            System.out.println("  Collected amount " + list1.getCollectedAmount() + "$");
+            System.out.println("  Number of days to end " + list1.getNumberOfDaysToEnd() + "\n");
+            i++;
         }
         System.out.println("--------------------------------------------------");
         System.out.println(menu);
@@ -45,17 +43,23 @@ public class CategoryState extends State {
     @Override
     public void changeState(Console context) {
         String inData = getInData();
-         if (inData.equalsIgnoreCase("q")) {
+        if (inData.equalsIgnoreCase("q")) {
             performExit();
             return;
         }
-        int inDataToInt = Integer.parseInt(inData);
-        if (inDataToInt == 0) {
+        int index = Integer.parseInt(inData);
+        if (index == 0) {
             context.setCurrentState(new WelcomeState());
         } else {
-            State.setIndexProject(inDataToInt);
+            State.setIdProject(convertIndexToId(index));
             context.setCurrentState(new ProjectState());
         }
 
+    }
+
+    protected int convertIndexToId(int index) {
+        index--;
+        int id = projects.get(index).getId();
+        return id;
     }
 }

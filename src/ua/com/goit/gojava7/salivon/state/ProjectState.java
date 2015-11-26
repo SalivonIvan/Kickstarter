@@ -7,7 +7,7 @@ import ua.com.goit.gojava7.salivon.dao.DaoFactory;
 
 public class ProjectState extends State {
 
-    private Project project = DaoFactory.getProjectDao(getCurrentDataType()).getProject(State.getIndexProject());
+    private Project project = DaoFactory.getProjectDao(getCurrentDataType()).getProject(State.getIdProject());
 
     public ProjectState() {
         handler = new ErrorHandlerStateProject();

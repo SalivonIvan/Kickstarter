@@ -10,8 +10,8 @@ public abstract class State {
     protected static Scanner scan = new Scanner(System.in);
     protected String menu;
     protected ErrorHandler handler;
-    private static int indexCategory;
-    private static int indexProject;
+    private static int idCategory;
+    private static int idProject;
     private boolean commandExit = true;
     private boolean commandZero = true;
     private static String inData;
@@ -53,20 +53,20 @@ public abstract class State {
         return scan;
     }
 
-    public static int getIndexCategory() {
-        return indexCategory;
+    public static int getIdCategory() {
+        return idCategory;
     }
 
-    public static void setIndexCategory(int indexCategory) {
-        State.indexCategory = indexCategory;
+    public static void setIdCategory(int indexCategory) {
+        State.idCategory = indexCategory;
     }
 
-    public static int getIndexProject() {
-        return indexProject;
+    public static int getIdProject() {
+        return idProject;
     }
 
-    public static void setIndexProject(int indexProject) {
-        State.indexProject = indexProject;
+    public static void setIdProject(int indexProject) {
+        State.idProject = indexProject;
     }
 
     public void verification() {

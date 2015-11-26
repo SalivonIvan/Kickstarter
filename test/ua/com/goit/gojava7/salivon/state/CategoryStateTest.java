@@ -10,7 +10,7 @@ public class CategoryStateTest {
     @Test
     public void testOutputContentState() {
         State.setCurrentData(State.FILE_DATA);
-        State.setIndexCategory(1);
+        State.setIdCategory(1);
         CategoryState instance = new CategoryState();
         instance.outputContentState();
     }
@@ -18,7 +18,7 @@ public class CategoryStateTest {
     @Test
     public void testChangeState() {
         State.setCurrentData(State.FILE_DATA);
-        State.setIndexCategory(1);
+        State.setIdCategory(1);
         Console context = new Console();
         CategoryState instance = new CategoryState();
         CategoryState spy = spy(instance);
