@@ -1,18 +1,16 @@
 package ua.com.goit.gojava7.salivon.handlers;
 
 import java.util.List;
-import ua.com.goit.gojava7.salivon.util.ManagerData;
-import ua.com.goit.gojava7.salivon.beans.Category;
-import ua.com.goit.gojava7.salivon.handlers.ErrorHandler;
 import ua.com.goit.gojava7.salivon.beans.Project;
 import ua.com.goit.gojava7.salivon.state.State;
+import ua.com.goit.gojava7.salivon.dao.DaoFactory;
 
 public class ErrorHandlerStateCategory implements ErrorHandler {
 
     private List<Project> projects;
 
-    public ErrorHandlerStateCategory(ManagerData managerData) {
-        this.projects = managerData.getProjectsOfCategory(State.getIndexCategory());
+    public ErrorHandlerStateCategory() {
+        this.projects = DaoFactory.getProjectDao(State.getCurrentDataType()).getProjectsOfCategory(State.getIndexCategory());
     }
 
     @Override

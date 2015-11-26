@@ -27,7 +27,7 @@ public class PreloadingStateTest {
         int inData = State.FILE_DATA;
         PreloadingState instance = new PreloadingState();
         instance.selectCurrentData(inData);
-        inData = State.OBJECT_DATA;
+        inData = State.MEMORY_DATA;
         instance.selectCurrentData(inData);
     }
 

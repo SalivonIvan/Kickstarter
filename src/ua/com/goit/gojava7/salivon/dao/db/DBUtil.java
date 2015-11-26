@@ -1,4 +1,4 @@
-package ua.com.goit.gojava7.salivon.util;
+package ua.com.goit.gojava7.salivon.dao.db;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

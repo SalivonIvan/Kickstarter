@@ -5,14 +5,16 @@ import ua.com.goit.gojava7.salivon.beans.Project;
 import java.util.List;
 import ua.com.goit.gojava7.salivon.handlers.ErrorHandlerStateCategory;
 import ua.com.goit.gojava7.salivon.context.Console;
+import static ua.com.goit.gojava7.salivon.state.State.getCurrentDataType;
+import ua.com.goit.gojava7.salivon.dao.DaoFactory;
 
 public class CategoryState extends State {
 
-    private List<Category> categories = getManagerData().getAllCategories();
-    private List<Project> projects = getManagerData().getProjectsOfCategory(State.getIndexCategory());
+    private List<Category> categories = DaoFactory.getCategoryDao(getCurrentDataType()).getAllCategories();
+    private List<Project> projects = DaoFactory.getProjectDao(getCurrentDataType()).getProjectsOfCategory(State.getIndexCategory());
 
     public CategoryState() {
-        handler = new ErrorHandlerStateCategory(getManagerData());
+        handler = new ErrorHandlerStateCategory();
         menu = "Enter the number of projects to select it.\n"
                 + "Enter 0 return to above.\n"
                 + "Enter 'q' to exit.\n";
