@@ -10,16 +10,15 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import ua.com.goit.gojava7.salivon.beans.Category;
 import ua.com.goit.gojava7.salivon.dao.CategoryDao;
+import ua.com.goit.gojava7.salivon.dao.PathFile;
 
 public class CategoryDaoFileImp implements CategoryDao {
-
-    private static final String PATH_TO_CATEGORY = "resource/category.csv";
 
     @Override
     public List<Category> getAllCategories() {
 
         List<Category> categories = new ArrayList<>();
-        File file = new File(PATH_TO_CATEGORY);
+        File file = new File(PathFile.CATEGORY.getPath());
         String category = null;
         try (BufferedReader br = new BufferedReader(new FileReader(file))) {
 
@@ -39,7 +38,7 @@ public class CategoryDaoFileImp implements CategoryDao {
     @Override
     public Category getCategory(int idCategory) {
         Category requestedCategory = null;
-        File file = new File(PATH_TO_CATEGORY);
+        File file = new File(PathFile.CATEGORY.getPath());
         String category = null;
         try (BufferedReader br = new BufferedReader(new FileReader(file))) {
 

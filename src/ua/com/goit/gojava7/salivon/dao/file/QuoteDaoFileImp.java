@@ -7,17 +7,16 @@ import java.io.IOException;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import ua.com.goit.gojava7.salivon.dao.PathFile;
 import ua.com.goit.gojava7.salivon.dao.QuoteDao;
 
 public class QuoteDaoFileImp implements QuoteDao {
-
-    private static final String PATH_TO_QUOTE = "resource/quote.csv";
 
     @Override
     public String getRandomQuote() {
         Random random = new Random();
         String quote = null;
-        File file = new File(PATH_TO_QUOTE);
+        File file = new File(PathFile.QUOTE.getPath());
 
         try (BufferedReader br = new BufferedReader(new FileReader(file))) {
 

@@ -10,14 +10,13 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import ua.com.goit.gojava7.salivon.beans.Faq;
 import ua.com.goit.gojava7.salivon.dao.FaqDao;
+import ua.com.goit.gojava7.salivon.dao.PathFile;
 
 public class FaqDaoFileImp implements FaqDao {
 
-    private static final String PATH_TO_FAQ = "resource/faq.csv";
-
     @Override
     public void saveFaq(Faq faq) {
-        File file = new File(PATH_TO_FAQ);
+        File file = new File(PathFile.FAQ.getPath());
         int idProject = faq.getIdProject();
         String context = faq.getContext();
         try (BufferedWriter br = new BufferedWriter(new FileWriter(file, true))) {
@@ -31,7 +30,7 @@ public class FaqDaoFileImp implements FaqDao {
     @Override
     public String getContextFaq(int idProject) {
         String faq = "";
-        File file = new File(PATH_TO_FAQ);
+        File file = new File(PathFile.FAQ.getPath());
         String line = null;
         try (BufferedReader br = new BufferedReader(new FileReader(file))) {
 
