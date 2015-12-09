@@ -2,6 +2,7 @@ package ua.com.goit.gojava7.salivon.state;
 
 import static org.junit.Assert.assertEquals;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import static org.mockito.Mockito.*;
 import ua.com.goit.gojava7.salivon.context.Console;
@@ -39,14 +40,15 @@ public class PreloadingStateTest {
 
     }
 
-    @Test
-    public void testSelectCurrentData() {
-        int inData = 1;
-        instance.selectCurrentData(inData);
-        inData = 2;
-        instance.selectCurrentData(inData);
-        inData = 3;
-        instance.selectCurrentData(inData);
-    }
+//    @Test
+//    @Ignore
+//    public void testSelectCurrentData() {
+//        int inData = 1;
+//        instance.selectCurrentData(inData);
+//        inData = 2;
+//        instance.selectCurrentData(inData);
+//        inData = 3;
+//        instance.selectCurrentData(inData);
+//    }
 
 }
